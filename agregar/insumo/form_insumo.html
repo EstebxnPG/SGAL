@@ -101,15 +101,5 @@
         </section>
     </main>
 </body>
-<script>
-    fetch("js/config.json")
-    .then(response => response.json()) // convierte la respuesta a formato json
-    .then(data => { 
-        const script = document.createElement("script");
-        script.src = data.script;
-        script.defer = true;
-        document.head.appendChild(script);
-    })
-    .catch(error => console.error("Error cargando el script", error));
-</script>
-</html>
+
+    
