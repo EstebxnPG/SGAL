@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de insumos</title>
+    <link rel="stylesheet" href="/agregar/styles/form.css">
+    <link rel="stylesheet" href="/agregar/styles/styles.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/components/js/aside-bar.js" defer></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+    </aside>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <h1 class="content__title">Agregar Insumo</h1>
+                <p class="content__subtitle">Registro de un nuevo insumo en la Granja Agrícola Lembo</p>
+                
+                <div class="form-container">
+                    <form class="form">
+                        <div class="form__grid">
+                            <div class="form__group">
+                                <label class="form__label">ID Insumo *</label>
+                                <input type="text" class="form__input" placeholder="Digite el ID del insumo" pattern="\d+" title="Solo se permiten números" maxlength="10">
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--nombre-insumo">Nombre del insumo *</label>
+                                <input type="text" class="form__input form__input--nombre-insumo" placeholder="Digite el nombre del insumo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--estado">Estado *</label>
+                                <input type="text" class="form__input form__input--estado" placeholder="habilitado" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--tipo-insumo">Tipo insumo *</label>
+                                <select class="form__input form__input--tipo-insumo" >
+                                    <option value="">Seleccione...</option>
+                                    <option value="Fertilizante">Fertilizante</option>
+                                    <option value="Pesticida">Pesticida</option>
+                                    <option value="Semilla">Semilla</option>
+                                    <option value="Herramienta">Herramienta</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label class="form__label form__label--unidad-medida">Unidad de medida *</label>
+                                <select class="form__input form__input--unidad-medida" >
+                                    <option value="">Seleccione...</option>
+                                    <option value="Kilogramos">Kilogramos</option>
+                                    <option value="Litros">Litros</option>
+                                    <option value="Unidades">Unidades</option>
+                                    <option value="Metros">Metros</option>
+                                </select>
+                            </div>
+                            
+
+                            <div class="form__group">
+                                <label class="form__label form__label--fotografia">Fotografía</label>
+                                <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--cantidad">Cantidad *</label>
+                                <input type="text" class="form__input form__input--cantidad" placeholder="Ingrese la cantidad del insumo" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--valor-unitario">Valor unitario *</label>
+                                <input type="text" class="form__input form__input--valor-unitario" placeholder="Ingrese el valor unitario del insumo" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--valor-total">Valor total *</label>
+                                <input type="text" class="form__input form__input--valor-total" placeholder="Ingrese el valor total del insumo" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--descripcion">Descripción *</label>
+                                <input type="tel" class="form__input form__input--descripcion" placeholder="Ingrese la descripción" >
+                            </div>
+                        </div>
+
+                        <div class="form__end">
+                            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+                            <button type="submit" class="form__register-btn">Registrar Insumo</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <button type="button" class="content__back-btn" onclick="location.href='../gestion/insumos.html'">VOLVER</button>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    fetch("js/config.json")
+    .then(response => response.json()) // convierte la respuesta a formato json
+    .then(data => { 
+        const script = document.createElement("script");
+        script.src = data.script;
+        script.defer = true;
+        document.head.appendChild(script);
+    })
+    .catch(error => console.error("Error cargando el script", error));
+</script>
+</html>
