@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.register__form');
-    const userList = document.querySelector('.users-list');
+    const form = document.querySelector('.form');
 
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
