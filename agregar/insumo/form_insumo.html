@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
     <script src="/components/js/aside-bar.js" defer></script>
+    <script src="/agregar/insumo/script.js"></script>
 </head>
 
 <body>
@@ -21,8 +22,8 @@
                 <h1 class="content__title">Agregar Insumo</h1>
                 <p class="content__subtitle">Registro de un nuevo insumo en la Granja Agrícola Lembo</p>
                 
-                <div class="form-container" action="http://localhost:3301/user" method= "POST">
-                    <form class="form">
+                <div class="form-container" >
+                    <form class="form" action="http://localhost:3000/insumo" method= "POST">
                         <div class="form__grid">
                             <div class="form__group">
                                 <label class="form__label">ID Insumo *</label>
