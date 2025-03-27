@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-          const response = await fetch('http://localhost:3001/user', {
+          const response = await fetch('http://localhost:3000/insumo', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
