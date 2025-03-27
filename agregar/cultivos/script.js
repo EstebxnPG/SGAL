@@ -1,26 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.register__form');
-    const userList = document.querySelector('.users-list');
+    const form = document.querySelector('.form');
 
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const userName = document.querySelector('.register__input--name');
-        const userEmail = document.querySelector('.register__input--email');
-        const userAdress = document.querySelector('.register__input--address');
-        const userCellphone = document.querySelector('.register__input--cellphone');
+        const cropType = document.querySelector('.form__input--typeCrop');
+        const cropName = document.querySelector('.form__input--name');
+        const cropIdentifier = document.querySelector('.form__input--cropIdentifier');
+        const cropSize = document.querySelector('.form__input--size');
+        const cropAddress = document.querySelector('.form__input--address');
+        const cropDescription = document.querySelector('.form__input--description');
+        const cropImage = document.querySelector('.form__upload-btn');
+        const cropState = document.querySelector('.form__input--state');
 
         const formdata = {
             // Evita erroes si algún campo no existe userName ?
-            name: userName ? userName.value : '',
-            email: userEmail ? userEmail.value : '',
-            address: userAdress ? userAdress.value : null,
-            phone: userCellphone ? userCellphone.value : ''
+            type: cropType ? cropType.value : '',
+            name: cropName ? cropName.value : '',
+            identifier: cropIdentifier ? cropIdentifier.value : '',
+            size: cropSize ? cropSize.value : '',
+            address: cropAddress ? cropAddress.value : '',
+            description: cropDescription ? cropDescription.value : null,
+            image: cropImage ? cropImage.value : null,
+            state: cropState ? cropState.value : '',
         };
 
         try{
-            const response = await fetch('http://localhost:3000/user', {
-                method: 'POST',
+            const response = await fetch('http://localhost:3000/cultivo', {
+                method: 'post',
                 // Se está indicando que el cuerpo 
                 headers: {
                     'Content-Type': 'application/json'

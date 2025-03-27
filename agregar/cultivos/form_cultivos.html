@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/agregar/styles/form.css">
     <link rel="stylesheet" href="/agregar/styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
+    <script src="../cultivo/script.js"></script>
     <script src="/components/js/aside-bar.js" defer></script>
 </head>
 
@@ -22,11 +23,11 @@
                 <p class="content__subtitle">Registro de un nuevo cultivo en la Granja Agrícola Lembo</p>
                 
                 <div class="form-container">
-                    <form class="form">
+                    <form class="form" method="post" action="http://localhost:3000/cultivo">
                         <div class="form__grid">
                             <div class="form__group">
                                 <label class="form__label">Tipo de cultivo *</label>
-                                <select class="form__input" >
+                                <select class="form__input form__input--typeCrop" >
                                     <option value="">Seleccione...</option>
                                     <option value="Maíz">Maíz</option>
                                     <option value="Trigo">Trigo</option>
@@ -39,28 +40,28 @@
 
                             <div class="form__group">
                                 <label class="form__label">Nombre del cultivo *</label>
-                                <input type="text" class="form__input" placeholder="Ingrese el Nombre del cultivo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                <input type="text" class="form__input form__input--name" placeholder="Ingrese el Nombre del cultivo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
                                 >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Identificador del Cultivo *</label>
-                                <input type="text" class="form__input" pattern="\d+" title="Solo se permiten números" placeholder="Ingrese el Número del cultivo" maxlength="10">
+                                <input type="text" class="form__input form__input--cropIdentifier" pattern="\d+" title="Solo se permiten números" placeholder="Ingrese el Número del cultivo" maxlength="10">
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Tamaño en m2 *</label>
-                                <input type="text" class="form__input" placeholder="Ingrese el tamaño" >
+                                <input type="text" class="form__input form__input--size" placeholder="Ingrese el tamaño" >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Ubicación *</label>
-                                <input type="text" class="form__input" placeholder="Ingrese la ubicación" >
+                                <input type="text" class="form__input form__input--address" placeholder="Ingrese la ubicación" >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Descripción *</label>
-                                <input type="text" class="form__input" placeholder="Ingrese la Descripción" >
+                                <input type="text" class="form__input form__input--description" placeholder="Ingrese la Descripción" >
                             </div>
 
                             <div class="form__group">
@@ -70,8 +71,9 @@
 
                             <div class="form__group">
                                 <label class="form__label">Estado *</label>
-                                <select class="form__input" disabled>
+                                <select class="form__input form__input--state">
                                     <option value="Activo">Activo</option>
+                                    <option value="Activo">Inactivo</option>
                                 </select>
                             </div>
                         </div>
