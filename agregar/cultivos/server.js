@@ -10,7 +10,8 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sgal_project'  
+  database: 'sgal_project',
+  port: 3306
 });
 
 db.connect(err => {

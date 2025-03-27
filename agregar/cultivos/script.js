@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cropImage = document.querySelector('.form__upload-btn');
         const cropState = document.querySelector('.form__input--state');
 
-        const formdata = {
+        const formData = {
             // Evita erroes si algún campo no existe userName ?
             type: cropType ? cropType.value : '',
             name: cropName ? cropName.value : '',
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 // Petición fetch para enviar datos en formato json a el servidor.
-                body: JSON.stringify(formdata)
+                body: JSON.stringify(formData)
             });
             
             if(!response.ok){
