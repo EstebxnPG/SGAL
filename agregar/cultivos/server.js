@@ -23,21 +23,21 @@ db.connect(err => {
 });
 
 app.post('/cultivo', (req, res) => {
-    const { type, name, identifier, size, address, description, image, state } = req.body;
+    const {id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado } = req.body;
 
-    if (!type || !name || !identifier || !size || !address || !description || !image || !state) {
+    if (!id || !tipo || !nombre || !identificador || !tamano || !ubicacion || !descripcion || !fotografia || !estado) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const sql = "INSERT INTO cultivos (type, name, identifier, size, address, description, image, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    const values = [type, name, identifier, size, address, description, image, state];
+    const sql = "INSERT INTO cultivos (id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const values = [ id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado];
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error insertando usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
-        res.status(201).json({ id: result.insertId, type, name, identifier, size, address, description, image, state });
+        res.status(201).json({ id: result.insertId, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado });
     });
 });
 

@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
+        const cropId = document.querySelector('.form__input--idCultivo');
         const cropType = document.querySelector('.form__input--typeCrop');
         const cropName = document.querySelector('.form__input--name');
         const cropIdentifier = document.querySelector('.form__input--cropIdentifier');
@@ -15,14 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = {
             // Evita erroes si algún campo no existe userName ?
-            type: cropType ? cropType.value : '',
-            name: cropName ? cropName.value : '',
-            identifier: cropIdentifier ? cropIdentifier.value : '',
-            size: cropSize ? cropSize.value : '',
-            address: cropAddress ? cropAddress.value : '',
-            description: cropDescription ? cropDescription.value : null,
-            image: cropImage ? cropImage.value : null,
-            state: cropState ? cropState.value : '',
+            id: cropId ? cropId.value : '',
+            tipo: cropType ? cropType.value : '',
+            nombre: cropName ? cropName.value : '',
+            identificador: cropIdentifier ? cropIdentifier.value : '',
+            tamano: cropSize ? cropSize.value : '',
+            ubicacion: cropAddress ? cropAddress.value : '',
+            descripcion: cropDescription ? cropDescription.value : null,
+            fotografia: cropImage ? cropImage.value : null,
+            estado: cropState ? cropState.value : '',
         };
 
         try{
