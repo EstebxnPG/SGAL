@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/agregar/styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
     <script src="../../components/js/aside-bar.js" defer></script>
+    <script  src="script.js"></script>
     
 </head>
 
@@ -23,22 +24,22 @@
                 <p class="content__subtitle">Registro de un nuevo sensor en la Granja Agrícola Lembo</p>
                 
                 <div class="form-container">
-                    <form class="form">
+                    <form class="form" action="http://localhost:3000/sensor" method="POST">
                         <div class="form__grid">
                             <div class="form__group">
                                 <label class="form__label">ID Sensor *</label>
-                                <input type="text" class="form__input" pattern="\d+" title="Solo se permiten números" placeholder="Digite el ID del sensor" maxlength="10" >
+                                <input type="text" class="form__input form__input--id" pattern="\d+" title="Solo se permiten números" placeholder="Digite el ID del sensor" maxlength="10" >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Nombre del sensor *</label>
-                                <input type="text" class="form__input" placeholder="Digite el nombre del sensor" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                <input type="text" class="form__input form__input--nombre" placeholder="Digite el nombre del sensor" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
                                 
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Estado *</label>
-                                <input type="text" class="form__input" placeholder="habilitado" >
+                                <input type="text" class="form__input form__input--estado" placeholder="habilitado" >
                             </div>
                             <div class="form__group">
                                 <label class="form__label form__label--tipo-sensor">Tipo Sensor *</label>
@@ -53,7 +54,7 @@
                             
                             <div class="form__group">
                                 <label class="form__label">Unidad de medida *</label>
-                                <select class="form__input" >
+                                <select class="form__input form__input--medida" >
                                     <option value="">Seleccione...</option>
                                     <option value="°C">°C</option>
                                     <option value="%">%</option>
@@ -69,7 +70,7 @@
 
                             <div class="form__group">
                                 <label class="form__label">Descripción *</label>
-                                <input type="tel" class="form__input" placeholder="Ingrese la descripción" >
+                                <input type="tel" class="form__input form__input--descripcion" placeholder="Ingrese la descripción" >
                             </div>
                         </div>
 

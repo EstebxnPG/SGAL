@@ -1,25 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.register__form');
-    const userList = document.querySelector('.users-list');
+    const form = document.querySelector('.form');
+    /* const userList = document.querySelector('.users-list'); */
 
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const userName = document.querySelector('.register__input--name');
-        const userEmail = document.querySelector('.register__input--email');
-        const userAdress = document.querySelector('.register__input--address');
-        const userCellphone = document.querySelector('.register__input--cellphone');
+        const idInsumo = document.querySelector('.form__input');
+        const nameInsumo = document.querySelector('.form__input--nombre-insumo');
+        const estadoInsumo = document.querySelector('.form__input--estado');
+        const typeInsumo = document.querySelector('.form__input--tipo-insumo');
+        const unidadMedida = document.querySelector('.form__input--unidad-medida');
+        const fotografiaInsumo = document.querySelector('.form__label--fotografia');
+        const cantidadInsumo = document.querySelector('.form__input--cantidad');
+        const valorunitaroInsumo = document.querySelector('.form__input--valor-unitario');
+        const valortotalInsumo = document.querySelector('.form__input--valor-total');
+        const descripcionInsumo = document.querySelector('.form__input--descripcion');
+
 
         const formdata = {
             // Evita erroes si algún campo no existe userName ?
-            name: userName ? userName.value : '',
-            email: userEmail ? userEmail.value : '',
-            address: userAdress ? userAdress.value : null,
-            phone: userCellphone ? userCellphone.value : ''
+            id: idInsumo ? idInsumo.value : '',
+            nombre: nameInsumo ? nameInsumo.value : '',
+            estado: estadoInsumo ? estadoInsumo.value : '',
+            tipo: typeInsumo ? typeInsumo.value : '',
+            unidad: unidadMedida ? unidadMedida.value : '',
+            fotografia: fotografiaInsumo ? fotografiaInsumo.value : '',
+            cantidad: cantidadInsumo ? cantidadInsumo.value : '',
+            valor_unitario: valorunitaroInsumo ? valorunitaroInsumo.value : '',
+            valor_total: valortotalInsumo ? valortotalInsumo.value : '',
+            descripcion: descripcionInsumo ? descripcionInsumo.value : ''
         };
 
         try{
-            const response = await fetch('http://localhost:3000/user', {
+            const response = await fetch('http://localhost:3001/user', {
                 method: 'POST',
                 // Se está indicando que el cuerpo 
                 headers: {

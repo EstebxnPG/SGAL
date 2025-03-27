@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de insumos</title>
-    <link rel="stylesheet" href="/agregar/styles/form.css">
-    <link rel="stylesheet" href="/agregar/styles/styles.css">
+    <link rel="stylesheet" href="../styles/form.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
     <script src="/components/js/aside-bar.js" defer></script>
 </head>
@@ -21,7 +21,7 @@
                 <h1 class="content__title">Agregar Insumo</h1>
                 <p class="content__subtitle">Registro de un nuevo insumo en la Granja Agrícola Lembo</p>
                 
-                <div class="form-container">
+                <div class="form-container" action="http://localhost:3301/user" method= "POST">
                     <form class="form">
                         <div class="form__grid">
                             <div class="form__group">
@@ -101,15 +101,5 @@
         </section>
     </main>
 </body>
-<script>
-    fetch("js/config.json")
-    .then(response => response.json()) // convierte la respuesta a formato json
-    .then(data => { 
-        const script = document.createElement("script");
-        script.src = data.script;
-        script.defer = true;
-        document.head.appendChild(script);
-    })
-    .catch(error => console.error("Error cargando el script", error));
-</script>
-</html>
+
+    
