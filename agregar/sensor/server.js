@@ -21,22 +21,23 @@ db.connect(err => {
     console.log('Conectado a la BD - FULL');
 });
 
-app.post('/user', (req, res) => {
-    const { name, email, address, phone } = req.body;
+app.post('/sensor', (req, res) => {
+    const { id, nombre, estado, tipo, unidad_medida, fotografia, descripcion } = req.body;
 
-    if (!name || !email || !phone) {
+    if (!id || !nombre || !estado || !tipo || !unidad_medida || !descripcion) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
+    
 
-    const sql = "INSERT INTO user (name, email, address, phone) VALUES (?, ?, ?, ?)";
-    const values = [name, email, address, phone];
+    const sql = "INSERT INTO sensor (id, nombre, estado, tipo, unidad_medida, fotografia, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const values = [id, nombre, estado, tipo, unidad_medida, fotografia, descripcion];
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error insertando usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
-        res.status(201).json({ id: result.insertId, name, email });
+        res.status(201).json({ id: result.insertId, id, nombre, estado, tipo, unidad_medida, fotografia, descripcion });
     });
 });
 
