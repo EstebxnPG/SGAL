@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try{
             const response = await fetch('http://localhost:3000/cultivo', {
-                method: 'post',
+                method: 'POST',
                 // Se está indicando que el cuerpo 
                 headers: {
                     'Content-Type': 'application/json'
