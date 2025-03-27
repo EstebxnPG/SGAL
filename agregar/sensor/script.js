@@ -1,25 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.register__form');
-    const userList = document.querySelector('.users-list');
+    const form = document.querySelector('.form');
+    const sensorList = document.querySelector('.sensors-list');
 
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const userName = document.querySelector('.register__input--name');
-        const userEmail = document.querySelector('.register__input--email');
-        const userAdress = document.querySelector('.register__input--address');
-        const userCellphone = document.querySelector('.register__input--cellphone');
+        const sensorId = document.querySelector('.form__input--id');
+        const sensorNombre = document.querySelector('.form__input--nombre');
+        const sensorEstado = document.querySelector('.form__input--estado');
+        const sensorTipo = document.querySelector('.form__input--tipo-sensor');
+        const sensorUMedida = document.querySelector('.form__input--medida');
+        const sensorDescripcion = document.querySelector('.form__input--descripcion');
 
         const formdata = {
-            // Evita erroes si algún campo no existe userName ?
-            name: userName ? userName.value : '',
-            email: userEmail ? userEmail.value : '',
-            address: userAdress ? userAdress.value : null,
-            phone: userCellphone ? userCellphone.value : ''
+            // Evita erroes si algún campo no existe sensor ?
+            id: sensorId ? sensorId.value : '',
+            nombre: sensorNombre ? sensorNombre.value : '',
+            estado: sensorEstado ? sensorEstado.value : null,
+            tipo: sensorTipo ? sensorTipo.value : '',
+            unidad_medida: sensorUMedida ? sensorUMedida.value : '',
+            fotografia: null, // Si no usas imágenes
+            descripcion: sensorDescripcion ? sensorDescripcion.value : null,
         };
 
         try{
-            const response = await fetch('http://localhost:3000/user', {
+            const response = await fetch('http://localhost:3000/sensor', {
                 method: 'POST',
                 // Se está indicando que el cuerpo 
                 headers: {
