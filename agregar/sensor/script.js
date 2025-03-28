@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const sensorId = document.querySelector('.form__input--id');
         const sensorNombre = document.querySelector('.form__input--nombre');
         const sensorEstado = document.querySelector('.form__input--estado');
         const sensorTipo = document.querySelector('.form__input--tipo-sensor');
@@ -14,12 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formdata = {
             // Evita erroes si algún campo no existe sensor ?
-            id: sensorId ? sensorId.value : '',
             nombre: sensorNombre ? sensorNombre.value : '',
             estado: sensorEstado ? sensorEstado.value : null,
             tipo: sensorTipo ? sensorTipo.value : '',
             unidad_medida: sensorUMedida ? sensorUMedida.value : '',
-            fotografia: null, // Si no usas imágenes
+            fotografia: null,
             descripcion: sensorDescripcion ? sensorDescripcion.value : null,
         };
 

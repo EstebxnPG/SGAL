@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const idInsumo = document.querySelector('.form__input');
         const nameInsumo = document.querySelector('.form__input--nombre-insumo');
         const estadoInsumo = document.querySelector('.form__input--estado');
         const typeInsumo = document.querySelector('.form__input--tipo-insumo');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formdata = {
             // Evita erroes si algún campo no existe userName ?
-            id: idInsumo ? idInsumo.value : '',
             nombre: nameInsumo ? nameInsumo.value : '',
             estado: estadoInsumo ? estadoInsumo.value : '',
             tipo: typeInsumo ? typeInsumo.value : '',

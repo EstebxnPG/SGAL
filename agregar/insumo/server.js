@@ -10,8 +10,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sgal_project',
-  port: 3305
+  database: 'sgal_lembo'
 });
 
 db.connect(err => {
@@ -25,12 +24,12 @@ db.connect(err => {
 app.post('/insumo', (req, res) => {
     const { id, nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion} = req.body;
 
-    if (!id || !nombre || !estado || !tipo || !unidad_medida || !cantidad || !valor_unitario|| !valor_total|| !descripcion) {
+    if (!nombre || !estado || !tipo || !unidad_medida || !cantidad || !valor_unitario|| !valor_total|| !descripcion) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const sql = "INSERT INTO insumo (id, nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    const values = [id, nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion];
+    const sql = "INSERT INTO insumo (nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const values = [ nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion];
 
     db.query(sql, values, (err, result) => {
         if (err) {

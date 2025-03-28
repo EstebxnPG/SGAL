@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sgal_project'  
+  database: 'sgal_lembo'  
 });
 
 db.connect(err => {
@@ -24,20 +24,21 @@ db.connect(err => {
 app.post('/sensor', (req, res) => {
     const { id, nombre, estado, tipo, unidad_medida, fotografia, descripcion } = req.body;
 
-    if (!id || !nombre || !estado || !tipo || !unidad_medida || !descripcion) {
+    if (!nombre || !estado || !tipo || !unidad_medida || !descripcion) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
+
     
 
-    const sql = "INSERT INTO sensor (id, nombre, estado, tipo, unidad_medida, fotografia, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    const values = [id, nombre, estado, tipo, unidad_medida, fotografia, descripcion];
+    const sql = "INSERT INTO sensor (nombre, estado, tipo, unidad_medida, fotografia, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+    const values = [nombre, estado, tipo, unidad_medida, fotografia, descripcion];
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error insertando usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
-        res.status(201).json({ id: result.insertId, id, nombre, estado, tipo, unidad_medida, fotografia, descripcion });
+        res.status(201).json({ id: result.insertId, nombre, estado, tipo, unidad_medida, fotografia, descripcion });
     });
 });
 

@@ -10,8 +10,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sgal_project',
-  port: 3306
+  database: 'sgal_lembo',
 });
 
 db.connect(err => {
@@ -23,23 +22,27 @@ db.connect(err => {
 });
 
 app.post('/cultivo', (req, res) => {
-    const {id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado } = req.body;
+    const { id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado } = req.body;
 
-    if (!id || !tipo || !nombre || !identificador || !tamano || !ubicacion || !descripcion || !fotografia || !estado) {
+    // Validación sin 'fotografia'
+    if (!tipo || !nombre || !identificador || !tamano || !ubicacion || !descripcion || !estado) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const sql = "INSERT INTO cultivos (id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    const values = [ id, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado];
+    const sql = "INSERT INTO cultivo (tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    // Si fotografía es null, usa NULL en la base de datos
+    const values = [tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia || null, estado ];
 
     db.query(sql, values, (err, result) => {
         if (err) {
-            console.error('Error insertando usuario:', err);
-            return res.status(500).json({ error: 'Error al registrar el usuario.' });
+            console.error('Error insertando cultivo:', err);
+            return res.status(500).json({ error: 'Error al registrar el cultivo.' });
         }
         res.status(201).json({ id: result.insertId, tipo, nombre, identificador, tamano, ubicacion, descripcion, fotografia, estado });
     });
 });
+
 
 app.listen(3000, () => {
     console.log('Servidor corriendo en http://localhost:3000');
