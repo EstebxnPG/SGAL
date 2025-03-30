@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de ciclo de cultivos</title>
-    <link rel="stylesheet" href="/agregar/styles/form.css">
-    <link rel="stylesheet" href="/agregar/styles/styles.css">
+    <link rel="stylesheet" href="../styles/form.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
     <script src="/components/js/aside-bar.js" defer></script>
 
@@ -26,29 +26,29 @@
                         <div class="form__grid">
                             <div class="form__group">
                                 <label class="form__label">ID de ciclo de cultivo *</label>
-                                <input type="text" class="form__input" placeholder="Digite el ID del ciclo" pattern="\d+" title="Solo se permiten números" maxlength="10">
+                                <input type="text" class="form__input form__input--id" placeholder="Digite el ID del ciclo" pattern="\d+" title="Solo se permiten números" maxlength="10">
 
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Nombre del ciclo cultivo *</label>
-                                <input type="text" class="form__input" placeholder="digite el nombre del ciclo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                <input type="text" class="form__input form__input--name" placeholder="digite el nombre del ciclo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
                                 >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Estado *</label>
-                                <input type="text" class="form__input" placeholder="Ingrese el estado del cultivo">
+                                <input type="text" class="form__input form__input--estado" placeholder="Ingrese el estado del cultivo">
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Fecha inicial *</label>
-                                <input type="text" class="form__input" placeholder="00/00/000">
+                                <input type="text" class="form__input  form__input--inicial" placeholder="00/00/000">
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Fecha final *</label>
-                                <input type="text" class="form__input" placeholder="00/00/000">
+                                <input type="text" class="form__input form__input--final" placeholder="00/00/000">
                             </div>
 
                             <div class="form__group">
@@ -58,7 +58,7 @@
 
                             <div class="form__group">
                                 <label class="form__label">Descripción *</label>
-                                <input type="tel" class="form__input" placeholder="Ingrese la Descripción">
+                                <input type="tel" class="form__input form__input--descripcion" placeholder="Ingrese la Descripción">
                             </div>
                         </div>
                         <div class="form__end">
