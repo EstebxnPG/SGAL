@@ -22,21 +22,21 @@ db.connect(err => {
 });
 
 app.post('/ciclo_cultivo', (req, res) => {
-    const { id, id_ciclo, nombre, estado, fecha_inicial, fecha_final, descripcion} = req.body;
+    const {nombre, estado, fecha_inicial, fecha_final, descripcion} = req.body;
 
-    if (!id|| !id_ciclo|| !nombre || !estado || !fecha_inicial || !fecha_final || !descripcion) {
+    if (!nombre || !estado || !fecha_inicial || !fecha_final || !descripcion) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const sql = "INSERT INTO insumo (nombre, estado, tipo, unidad_medida, cantidad, valor_unitario, valor_total, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    const values = [ id, id_ciclo, nombre, estado, fecha_inicial, fecha_final, descripcion];
+    const sql = "INSERT INTO ciclo_cultivo (nombre, estado, fecha_inicial, fecha_final, descripcion) VALUES (?, ?, ?, ?, ?)";
+    const values = [nombre, estado, fecha_inicial, fecha_final, descripcion];
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error insertando usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
-        res.status(201).json({ id: result.insertId,id, id_ciclo, nombre, estado, fecha_inicial, fecha_final, descripcion });
+        res.status(201).json({ id: result.insertId, nombre, estado, fecha_inicial, fecha_final, descripcion });
     });
 });
 

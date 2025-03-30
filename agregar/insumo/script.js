@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const nameInsumo = document.querySelector('.form__input--nombre-insumo');
-        const estadoInsumo = document.querySelector('.form__input--estado');
+        const estadoInsumo = document.querySelector('.form__input--state');
         const typeInsumo = document.querySelector('.form__input--tipo-insumo');
         const unidadMedida = document.querySelector('.form__input--unidad-medida');
        /*  const fotografiaInsumo = document.querySelector('.form__label--fotografia'); */

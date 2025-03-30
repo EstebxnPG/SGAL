@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
-        const id = document.querySelector('.form__input');
-        const idcultivo = document.querySelector('.form__input--id');
         const nameciclo = document.querySelector('.form__input--name');
-        const estadociclo = document.querySelector('.form__input--estado');
+        const estadociclo = document.querySelector('.form__input--state');
         const fechainicial = document.querySelector('.form__input--inicial');
         const fechafinal = document.querySelector('.form__input--final');
        /*  const fotografiaInsumo = document.querySelector('.form__label--fotografia'); */
@@ -16,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formdata = {
             // Evita erroes si algún campo no existe userName ?
-            id : id ? id.value : '',
-            id_ciclo : idcultivo? idcultivo.value : '',
             nombre: nameciclo ? nameciclo.value : '',
             estado: estadociclo ? estadociclo.value : '',
             fecha_inicial: fechainicial ? fechainicial.value : '',

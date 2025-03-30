@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         const sensorNombre = document.querySelector('.form__input--nombre');
-        const sensorEstado = document.querySelector('.form__input--estado');
+        const sensorEstado = document.querySelector('.form__input--state');
         const sensorTipo = document.querySelector('.form__input--tipo-sensor');
         const sensorUMedida = document.querySelector('.form__input--medida');
         const sensorDescripcion = document.querySelector('.form__input--descripcion');
