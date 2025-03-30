@@ -18,7 +18,7 @@ function inicializarValidaciones() {
                     input.insertAdjacentElement("afterend", errorSpan);
                 }
 
-                if (input.value.trim() === "") { // Trim para validar que tenga espacios en blanco
+                if (input.value.trim() === "") {
                     validarCampo = false;
                     errorSpan.textContent = `El campo es obligatorio.`;
                 } else {
