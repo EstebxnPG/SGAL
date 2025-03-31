@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/agregar/styles/styles.css">
     <script src="/agregar/js/cargar_script.js"></script>
     <script src="/components/js/aside-bar.js" defer></script>
-    <script src="../usuarios/script.js"></script>
+    <script src="/agregar/usuarios/script.js"></script>
         
 </head>
 
@@ -29,11 +29,11 @@
                         <p class="notification__message"></p>
                     </div>
 
-                    <form id="form" class="form">
+                    <form id="form" class="form" action="http://localhost:3000/usuario" method="POST">
                         <div class="form__grid">
                             <div class="form__group">
                                 <label class="form__label">Tipo de Usuario *</label>
-                                <select class="form__input" >
+                                <select class="form__input form__input--typeUser" >
                                     <option value="">Seleccione...</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Operador">Operador</option>
@@ -42,7 +42,7 @@
 
                             <div class="form__group">
                                 <label class="form__label">Tipo de Documento *</label>
-                                <select class="form__input" >
+                                <select class="form__input form__input--typeDocument" >
                                     <option value="">Seleccione...</option>
                                     <option value="CC">Cédula de Ciudadanía</option>
                                     <option value="TI">Tarjeta de Identidad</option>
@@ -52,33 +52,33 @@
 
                             <div class="form__group">
                                 <label class="form__label">Numero de Documento *</label>
-                                <input type="text" id="numDocumento" class="form__input" pattern="\d+" title="Solo se permiten números" placeholder="Ingrese el Numero de Documento" maxlength="10">
+                                <input type="text" id="numDocumento" class="form__input form__input--number" pattern="\d+" title="Solo se permiten números" placeholder="Ingrese el Numero de Documento" maxlength="10">
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Nombre *</label>
-                                <input type="text" id="nombre" class="form__input" placeholder="Ingrese el Nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                <input type="text" id="nombre" class="form__input form__input--name" placeholder="Ingrese el Nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
                                 
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Correo electronico *</label>
-                                <input type="email" id="correo" class="form__input" placeholder="Ingrese el correo electronico" >
+                                <input type="email" id="correo" class="form__input form__input--email" placeholder="Ingrese el correo electronico" >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Confirmacion Correo *</label>
-                                <input type="email" id="confirmCorreo" class="form__input" placeholder="Confirme el correo electronico" >
+                                <input type="email" id="confirmCorreo" class="form__input form__input--confirmEmail" placeholder="Confirme el correo electronico" >
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Numero telefonico *</label>
-                                <input type="text" id="numTelefono" class="form__input" placeholder="Ingrese el Numero telefonico" maxlength="10">
+                                <input type="text" id="numTelefono" class="form__input form__input--phone" placeholder="Ingrese el Numero telefonico" maxlength="10">
                             </div>
 
                             <div class="form__group">
                                 <label class="form__label">Estado *</label>
-                                <select class="form__input" >
+                                <select class="form__input form__input--state" >
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>
                                 </select>

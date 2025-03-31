@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'sgal_project'  
+  database: 'sgal_lembo'  
 });
 
 db.connect(err => {
@@ -21,22 +21,22 @@ db.connect(err => {
     console.log('Conectado a la BD - FULL');
 });
 
-app.post('/user', (req, res) => {
-    const { name, email, address, phone } = req.body;
+app.post('/usuario', (req, res) => {
+    const { tipo_usuario, tipo_documento, num_documento, nombre, correo, num_telefono, estado } = req.body;
 
-    if (!name || !email || !phone) {
+    if (!tipo_usuario || !tipo_documento || !num_documento || !nombre || !correo || !num_telefono || !estado) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    const sql = "INSERT INTO user (name, email, address, phone) VALUES (?, ?, ?, ?)";
-    const values = [name, email, address, phone];
+    const sql = "INSERT INTO usuario (tipo_usuario, tipo_documento, num_documento, nombre, correo, num_telefono, estado ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const values = [tipo_usuario, tipo_documento, num_documento, nombre, correo, num_telefono, estado];
 
     db.query(sql, values, (err, result) => {
         if (err) {
             console.error('Error insertando usuario:', err);
             return res.status(500).json({ error: 'Error al registrar el usuario.' });
         }
-        res.status(201).json({ id: result.insertId, name, email });
+        res.status(201).json({ id: result.insertId, tipo_usuario, tipo_documento, num_documento, nombre, correo, num_telefono, estado});
     });
 });
 

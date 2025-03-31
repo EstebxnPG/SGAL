@@ -4,17 +4,24 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async(event) =>{
         event.preventDefault();
 
-        const userName = document.querySelector('.register__input--name');
-        const userEmail = document.querySelector('.register__input--email');
-        const userAdress = document.querySelector('.register__input--address');
-        const userCellphone = document.querySelector('.register__input--cellphone');
-
-        const formdata = {
+        const userTypeUser = document.querySelector('.form__input--typeUser');
+        const userTypeDocument = document.querySelector('.form__input--typeDocument');
+        const userNumber = document.querySelector('.form__input--number');
+        const userName = document.querySelector('.form__input--name');
+        const userEmail = document.querySelector('.form__input--email');
+        const userphone = document.querySelector('.form__input--phone');
+        const userState = document.querySelector('.form__input--state');
+        
+        const formData = {
             // Evita erroes si algún campo no existe userName ?
-            name: userName ? userName.value : '',
-            email: userEmail ? userEmail.value : '',
-            address: userAdress ? userAdress.value : null,
-            phone: userCellphone ? userCellphone.value : ''
+            tipo_usuario: userTypeUser ? userTypeUser.value : '',
+            tipo_documento: userTypeDocument ? userTypeDocument.value : '',
+            num_documento: userNumber ? userNumber.value : '',
+            nombre: userName ? userName.value : '',
+            correo: userEmail ? userEmail.value : '',
+            num_telefono: userphone ? userphone.value : '',
+            estado: userState ? userState.value : '',
+            fotografia: null
         };
 
         try{
@@ -25,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 // Petición fetch para enviar datos en formato json a el servidor.
-                body: JSON.stringify(formdata)
+                body: JSON.stringify(formData)
             });
             
             if(!response.ok){
