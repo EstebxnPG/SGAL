@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const userEmail = document.querySelector('.form__input--email');
         const userphone = document.querySelector('.form__input--phone');
         const userState = document.querySelector('.form__input--state');
+        const userPassword = document.querySelector('.form__input--password');
+
         
         const formData = {
             // Evita erroes si algún campo no existe userName ?
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             correo: userEmail ? userEmail.value : '',
             num_telefono: userphone ? userphone.value : '',
             estado: userState ? userState.value : '',
+            contrasena: userPassword ? userPassword.value : '',
             fotografia: null
         };
 
