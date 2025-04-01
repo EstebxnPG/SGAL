@@ -72,4 +72,6 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `correo` (`correo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-COMMIT;
+ALTER TABLE `usuario` 
+ADD COLUMN `contrasena` VARCHAR(255) NOT NULL AFTER `correo`;
+
