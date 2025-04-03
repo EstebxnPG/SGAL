@@ -1,0 +1,62 @@
+body {          
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;    
+}
+
+.form-container {    
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 360px;
+    text-align: center;
+    border: solid 0.1rem var(--primary-950);
+}
+
+.form-title {
+    margin-bottom: var(--fs-sm);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    margin-bottom: 4px;
+    text-align: left;
+    font-size: var(--fs-xxs);
+
+}
+
+.form__input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form__button {
+    background-color: transparent;
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--fs-xs);
+    border: solid 0.1rem var(--white);
+    margin: 20px;
+}
+
+.form__button:hover {    
+    color: var(--primary-500);
+    border: solid 0.1rem var(--primary-500);
+}
+
+.form__input::placeholder {
+    color: var(--gray-500);    
+    font-size: var(--fs-xxs);
+    opacity: 0.7; /* Asegura que no sea semi-transparente */
+}
