@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Cultivos</title>
-    <link rel="stylesheet" href="/agregar/styles/form-agregar-modificar.css">
-    <link rel="stylesheet" href="/agregar/styles/agregar-modificar.css">
-    <script src="/components/js/aside-bar.js" defer></script>
-    <script src="/modificar/js/cargar_script.js"></script>
+    <title>Gestión de ciclo de cultivos</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
 
     <main class="main">
         <section class="content">
-            <div class="container">
+            <div class="content__container">
                 <h1 class="content__title">Modificar Cultivo</h1>
                 <p class="content__subtitle">Modificar un cultivo en la Granja Agrícola Lembo</p>
                 
@@ -37,7 +38,7 @@
     
                             <div class="form__group">
                                 <label class="form__label">Tipo de Cultivo *</label>
-                                <select class="form__select" required>
+                                <select class="form__input" required>
                                     <option value="">Seleccione...</option>
                                     <option value="hortalizas">Hortalizas</option>
                                     <option value="frutas">Frutas</option>

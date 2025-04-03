@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Ciclo de Cultivos</title>
-    <link rel="stylesheet" href="/agregar/styles/form-agregar-modificar.css">
-    <link rel="stylesheet" href="/agregar/styles/agregar-modificar.css">
-    <script src="/components/js/aside-bar.js" defer></script>
-    <script src="/modificar/js/cargar_script.js"></script>
-
+    <title>Gestión de ciclo de cultivos</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="script.js"></script>
 </head>
 
-<body class="body">
+<body>
     <aside class="sidebar">
     </aside>
 
     <main class="main">
         <section class="content">
-            <div class="container">
+            <div class="content__container">
                 <h1 class="content__title">Modificar Ciclo de Cultivo</h1>
                 <p class="content__subtitle">Modificar un ciclo de cultivo en la Granja Agrícola Lembo</p>
                 
@@ -32,7 +32,7 @@
         
                             <div class="form__group">
                                 <label class="form__label" for="nombre_ciclo">Nombre del Ciclo *</label>
-                                <input type="text" id="nombre_ciclo" class="form__input" placeholder="Digite el nombre del ciclo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                <input type="text" class="form__input form__input--name" placeholder="digite el nombre del ciclo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
                                 
                             </div>
         
@@ -48,7 +48,7 @@
         
                             <div class="form__group">
                                 <label class="form__label" for="estado">Estado *</label>
-                                <select id="estado" class="form__select">
+                                <select id="estado" class="form__input">
                                     <option value="">Seleccione...</option>
                                     <option value="activo">Activo</option>
                                     <option value="finalizado">Finalizado</option>

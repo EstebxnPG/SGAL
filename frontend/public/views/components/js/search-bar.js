@@ -1,5 +1,5 @@
 function loadNavbar() {
-    fetch('../components/html/search-bar.html')
+    fetch(`${window.location.origin}/frontend/public/views/components/html/search-bar.html`)
       .then(response => response.text())
       .then(data => {
         document.querySelector('.header').innerHTML = data;
