@@ -153,6 +153,16 @@ form{
     text-decoration: none;
 }
 
+.form__button--enviar{
+    color: var(--Blanco);
+    text-decoration: none;
+}
+
+.form__link{
+    color: var(--basic-white);
+    text-decoration: none;
+}
+
 .form__button:hover{
     background-color: var(--primary-color-950);
 }
