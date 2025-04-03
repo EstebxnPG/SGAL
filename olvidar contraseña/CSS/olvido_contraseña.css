@@ -1,3 +1,5 @@
+/* Estilos que abarca (confirmacion.html, index2.html, recuperar_contraseña.html, validacion.html) */
+
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
@@ -168,6 +170,12 @@ form{
     font-size: 1.6rem;
     margin-top: 1rem;
     text-decoration: none;
+}
+.form__link{
+    text-decoration: none;
+    color: var(--Blanco);
+    font-size: 1.4rem;
+    margin-top: 1rem;
 }
 
 .form__button--secondary:hover{
