@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/agregar/js/config.json")
+    fetch("/config.json")
         .then(response => response.json())
         .then(data => { 
             if (data.script) {
