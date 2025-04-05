@@ -37,3 +37,27 @@ setTimeout(() => {
     console.log("LLAMAMOS LA FUNCION.");
     inicializarValidaciones();
 }, 100);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".login__form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Evita la redirección automática
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (validarFormulario(email, password)) {
+            window.location.href = "../../../index.html";
+        } else {
+        }
+    });
+
+    function validarFormulario(email, password) {
+        if (email === "" || password === "") {
+            return false;
+        }   
+        return true;
+    }
+});
