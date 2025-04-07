@@ -24,7 +24,7 @@ function inicializarValidaciones() {
                 } else {
                     errorSpan.textContent = "";
                 }
-            });
+            }); 
 
             if (validarCampo) {
                 alert("Formulario enviado correctamente.");
