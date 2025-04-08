@@ -390,4 +390,16 @@ input, select {
     gap: 0.5rem;
 }
   
+.form__boton--edt{
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--basic-gray-750);
+    color: var(--white);
+}
+.form__boton--dlt{
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--basic-orange-950);
+    color: var(--white);
+}
 
