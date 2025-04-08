@@ -360,7 +360,6 @@ input, select {
     to { opacity: 1; }
 }
 
-/* Contenedor del mensaje */
 .form__message-box {
     text-align: center;
     margin-top: 2rem;
@@ -368,10 +367,9 @@ input, select {
     border-radius: 0.5rem;
     font-size: 1.8rem;
     font-weight: bold;
-    display: none; /* Se oculta por defecto */
+    display: none; 
 }
 
-/* Mensaje de error */
 .form__message--error {
     background-color: var(--basic-orange-950);
     color: var(--white);
@@ -379,10 +377,17 @@ input, select {
     border-radius: 0.5rem;
 }
 
-/* Mensaje de éxito */
 .form__message--success {
     background-color: var(--primary-800);
     color: white;
     padding: 1rem;
     border-radius: 0.5rem;
 }
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+  
+
