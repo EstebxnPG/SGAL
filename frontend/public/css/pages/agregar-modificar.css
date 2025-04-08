@@ -950,3 +950,132 @@ td, th {
 
 
 
+.form__step {
+    display: none;
+  }
+  
+  .form__step--active {
+    display: block;
+  }
+
+  .form__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+  
+  .form__tab {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6b7280; 
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .form__tab:hover {
+    color: #111827; 
+  }
+  
+  .form__tab--active {
+    color: #111827; 
+    border-color: var(--primary-950); 
+    font-weight: 600;
+  }
+  
+
+  .form__step--active {
+    display: block;
+    
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1000px;
+    margin-inline: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+
+  .form__step > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form__step > div:first-child > div {
+    flex: 1;
+  }
+  
+  .form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .form__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+  
+  .form__add-btn {
+    padding: 0.5rem 0.5rem;
+    background-color: var(--primary-600);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    height: 100%;
+    white-space: nowrap;
+  }
+  
+  .form__step > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .form__prev, .form__next {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--primary-950);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .form__prev {
+    background-color: var(--secondary-700);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .form__step > div:first-child {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .form__step > div:last-child {
+      flex-direction: column;
+    }
+  
+    .form__add-btn {
+      width: 100%;
+    }
+  }
+  
