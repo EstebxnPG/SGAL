@@ -397,9 +397,39 @@ input, select {
     color: var(--white);
 }
 .form__boton--dlt{
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 1rem;
     background-color: var(--basic-orange-950);
     color: var(--white);
 }
+.form__btn--dlt{
+    background-color: var(--basic-orange-950);
+    height: 100%;
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem;
+    color: var(--white);
+    border: none;
+}
+.form__botons{
+    justify-content: center;
+    align-items: center;
+}
 
+.user-card__edit-btn,
+.user-card__delete-btn{
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+}
+
+.user-card__edit-btn {
+    background-color: var(--secondary-800);
+    color: var(--white);
+}
+
+.user-card__delete-btn{
+    background-color: var(--basic-orange-950);
+    color: var(--white);
+}

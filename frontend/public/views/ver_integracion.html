@@ -21,7 +21,7 @@
                 <h1 class="content__title">Integración</h1>
                 
                 <div class="form-container">
-                    <form class="form" method="POST" action="http://localhost:3000/ciclo_cultivo">
+                    <form class="form" method="POST">
                         <div class="form__grid">
                             
                             <div class="form__groups">
@@ -90,8 +90,8 @@
                             <p class="form__mandatory-text">Opciones:</p>
                             
                             
-                            <button class="form__boton--edt">Editar</button>
-                                    <button class="form__boton--dlt">Eliminar</button>
+                            <button class="user-card__edit-btn" onclick="location.href='modificar/modificar_integración.html'">Editar</button>
+                            <button class="user-card__delete-btn">Eliminar</button>
                         </div>
                     </form>
                 </div>
@@ -99,7 +99,6 @@
         </section>
     </main>
 <script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
-    <script src="/frontend/public/js/validaciones_agregar.js"></script>
 </body>
 
 </html>
