@@ -93,14 +93,14 @@ main {
     }
 }
 
-.content {
+.mainContent {
     padding: var(--spacing-medium);
     max-width: 100%;
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
 
 
-.content-header {
+.content__header {
     display: flex;
     justify-content: space-between;
     align-items: left;
@@ -135,7 +135,7 @@ p{
     padding: var(--spacing-medium) 0;
 }
 
-.logo {
+.sidebar__logo {
     text-align: center;
     font-size: 2.4rem;
     font-weight: bold;
@@ -159,14 +159,14 @@ p{
     background-color: var(--primary-800);
 }
 
-.admin-profile {
+.sidebar__profile {
     position: absolute;
     bottom: var(--spacing-medium);
     width: 100%;
     text-align: center;
 }
 
-.admin-avatar {
+.sidebar__avatar {
     width: 6rem;
     height: 6rem;
     background-color: var(--white);
@@ -192,7 +192,7 @@ p{
         align-items: center;
     }
 
-    .logo {
+    .sidebar__logo {
         font-size: var(--font-subtitle);
         padding: 0.5rem 1rem;
     }
@@ -212,7 +212,7 @@ p{
         text-align: center;
     }
 
-    .admin-profile {
+    .sidebar__profile {
         display: none;
     }
 }
@@ -226,7 +226,7 @@ p{
         padding: 0.5rem;
     }
 
-    .logo {
+    .sidebar__logo {
         flex: 1 1 100%;
         font-size: 1.6rem;
         text-align: center;
@@ -248,7 +248,7 @@ p{
         justify-content: space-between;
     }
 
-    .admin-avatar {
+    .sidebar__avatar {
         width: 4rem;
         height: 4rem;
         padding: 100rem;
@@ -266,7 +266,7 @@ header {
     box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
-.search-bar input {
+.header__search-bar input {
     padding: 0.8rem 1.5rem;
     border: 0.1rem solid var(--basic-gray-150);
     border-radius: var(--border-radius-small);
@@ -274,7 +274,7 @@ header {
     font-size: var(--font-paragraph);
 }
 
-.header-actions button {
+.header__actions button {
     width: 4rem;
     height: 4rem;
     border: none;
@@ -284,25 +284,25 @@ header {
     cursor: pointer;
 }
 
-.date-picker {
+.header__date-picker {
     display: flex;
     align-items: center;
 }
 
-.date-picker p {
+.header__date-picker p {
     color: var(--basic-gray-750);
 }
 
-.report-btn {
+.content__report-btn {
     background-color: var(--primary-950);
     text-decoration: none;
 }
 
-.notification-btn::before {
+.header__notification-btn::before {
     content: "🔔";
 }
 
-.settings-btn::before {
+.header__settings-btn::before {
     content: "⚙️";
 }
 
@@ -318,41 +318,41 @@ header {
         margin-top: 4rem;
     }
 
-    .search-bar {
+    .header__search-bar {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .search-bar input {
+    .header__search-bar input {
         width: 100%;
         font-size: var(--font-paragraph);
     }
 
-    .date-picker {
+    .header__date-picker {
         width: auto;
         justify-content: flex-start;
         margin-bottom: 1rem;
     }
 
-    .date-picker p {
+    .header__date-picker p {
         font-size: 1.2rem;
     }
 
-    .header-actions {
+    .header__actions {
         display: flex;
         justify-content: flex-end;
         gap: 1rem;
     }
 
-    .header-actions button {
+    .header__actions button {
         width: 3.5rem;
         height: 3.5rem;
     }
-    .content-header{
+    .content__header{
         display: flex;
     }
 
-    .actions{
+    .content__actions{
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -367,17 +367,17 @@ header {
         margin-top: 15rem;
     }
 
-    .search-bar {
+    .header__search-bar {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .search-bar input {
+    .header__search-bar input {
         width: 100%;
         font-size: var(--font-paragraph);
     }
 
-    .date-picker {
+    .header__date-picker {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -385,37 +385,37 @@ header {
         margin-bottom: 1rem;
     }
 
-    .date-picker p {
+    .header__date-picker p {
         font-size: 1rem;
     }
 
-    .header-actions {
+    .header__actions {
         width: 100%;
         display: flex;
         justify-content: space-between;
         gap: 0.5rem;
     }
 
-    .header-actions button {
+    .header__actions button {
         width: 3rem;
         height: 3rem;
     }
-    .content-header{
+    .content__header{
         display: flex;
         text-align: left;
         flex-direction: column;
         margin-left: 0rem;    
     }
-    .actions{
+    .content__actions{
         display: flex;
         justify-content: space-around;
     }
-    .actions button{
+    .content__actions button{
         width: 20rem;        
     }
 }
 
-.actions button {
+.content__actions button {
     padding: 0.8rem 1.6rem;
     border: none;
     border-radius: var(--border-radius-small);
@@ -423,19 +423,19 @@ header {
     margin-left: 1rem;
 }
 
-.filter-btn {
+.content__filter-btn {
     background-color: var(--secondary-300);
     color: var(--white);
     font-weight: 600;
 }
 
-.report-btn {
+.content__report-btn {
     background-color: var(--secondary-400);
     color: var(--white);
     font-weight: 600;
 }
 
-.add-btn {
+.content__add-btn{
     background-color: var(--primary-950);
     color: var(--white);
     font-weight: 600;
@@ -461,7 +461,7 @@ header {
     width: 100%;
 }
 
-.user-avatar {
+.user-card__avatar {
     width: 100%;
     height: 10rem;
     margin-bottom: 1.5rem;
@@ -469,28 +469,28 @@ header {
     justify-content: center;
 }
 
-.user-avatar img {
+.user-card__avatar img {
     width: 10rem;
     height: 10rem;
     border: 0.1rem solid rgba(0, 0, 0, 0.1);
 }
 
-.user-info {
+.user-card__info {
     margin-bottom: 1.5rem;
 }
 
-.user-info > div {
+.user-card__info > div {
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
 }
 
-.user-actions {
+.user-card__actions {
     display: flex;
     gap: 0.5rem;
 }
 
-.edit-btn,
-.delete-btn {
+.user-card__edit-btn,
+.user-card__delete-btn{
     flex: 1;
     padding: 0.8rem;
     border: none;
@@ -498,12 +498,12 @@ header {
     cursor: pointer;
 }
 
-.edit-btn {
+.user-card__edit-btn {
     background-color: var(--secondary-800);
     color: var(--white);
 }
 
-.delete-btn {
+.user-card__delete-btn{
     background-color: var(--basic-orange-950);
     color: var(--white);
 }
@@ -519,17 +519,17 @@ header {
         padding: 0.8rem;
     }
 
-    .user-avatar img {
+    .user-card__avatar img {
         width: 7rem;
         height: 7rem;
     }
 
-    .user-info {
+    .user-card__info {
         margin-bottom: 0.8rem;
         font-size: 0.9rem;
     }
 
-    .user-actions button {
+    .user-card__actions button {
         font-size: 0.9rem;
         padding: 0.5rem;
     }
@@ -546,22 +546,22 @@ header {
         padding: 0.5rem;
     }
 
-    .user-avatar img {
+    .user-card__avatar img {
         width: 6rem;
         height: 6rem;
     }
 
-    .user-info {
+    .user-card__info {
         font-size: 0.8rem;
         margin-bottom: 0.5rem;
     }
 
-    .user-actions {
+    .user-card__actions {
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    .user-actions button {
+    .user-card__actions button {
         font-size: var(--font-paragraph);
         padding: 0.4rem;
     }
@@ -575,28 +575,28 @@ h2 {
     text-align: center;
 }
 
-.elements-container{
+.cardElements{
     display: flex;
     padding-top: 1rem;
     gap: 1rem;
     justify-content: space-around;
 }
 
-.element-home img{
+.card__element img{
     width: 14rem;
     height: 14rem;
 }
 
-.card-home{
+.card{
     padding: 0.5rem 1rem;
     border: 2px solid rgb(150, 147, 147);
     border-radius: 6px;
 }
 
-.agree{
+.card__element--add {
     width: 8rem;
     height: 8rem;
-    border-radius: 6px;
+    border-radius: 0.375rem;
     display: flex;
     cursor: pointer;
     flex-direction: column;
@@ -605,27 +605,27 @@ h2 {
     border: 1px solid var(--black);
 }
 
-.two{
+.card--task {
     display: flex;
 }
 
-aside{
+aside {
     border-right: 1px solid var(--basic-gray-950);
     padding: 1rem;
 }
 
-li{
-    border-bottom: 1px solid var(--primary-800);
+li {
+    border-bottom: 1px solid var(--primary-900);
 }
 
-li p{
+li p {
     font-weight: 600;
-    color: var(--secondary-700);
+    color: #2e566d;
 }
 
-.primary-btn{
+.tasks__btn{
     padding: 0.3rem 0.8rem;
-    background-color: var(--primary-800);
+    background-color: var(--primary-900);
     border: none;
     color: var(--white);
     font-weight: 600;
@@ -634,7 +634,7 @@ li p{
     border-radius: 15px;
 }
 
-.right{
+.tasks__actions {
     width: 80%;
     gap: 1rem;
     display: flex;
@@ -643,193 +643,113 @@ li p{
     justify-content: center;
 }
 
-table{
+table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 1rem;
     font-size: var(--font-paragraph);
 }
 
-td, th{
+td, th {
     padding: 0.5rem;
     border-right: 2px solid var(--primary-900);
     border-bottom: 2px solid var(--primary-900);
 }
 
-.end{
+.notifications__cell--end {
     border-right: none;
 }
 
-.full{
+.card--full {
     grid-column: 1/3;
-}
-
-
-/* estilos para telefono */
-@media screen and (max-width: 600px) {
-    .cards-container {
-        grid-template-columns: 1fr;
-        grid-gap: var(--spacing-small);
-    }
-
-    .card-home {
-        padding: var(--spacing-small);
-    }
-
-    .element-home img {
-        width: 100%;
-        height: auto;
-    }
-
-    .agree a {
-        font-size: var(--font-paragraph);
-    }
-
-    aside {
-        font-size: var(--font-paragraph);
-        padding: var(--spacing-small);
-    }
-
-    table {
-        font-size: 1.2rem;
-    }
-
-    .user-avatar img {
-        width: 8rem;
-        height: 8rem;
-    }
-
-    .user-info > div {
-        font-size: 1.2rem;
-    }
-
-    button {
-        padding: 0.5rem 1rem;
-        font-size: 1.2rem;
-    }
-}
-/* General Styles */
-.content {
-    padding: var(--spacing-medium);
-} 
-
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: var(--spacing-medium);
-} 
-
-.card-home {
-    padding: 0.5rem 1rem;
-    border: 2px solid rgb(150, 147, 147);
-    border-radius: 6px;
-} 
-
-.elements-container {
-    display: flex;
-    padding-top: 1rem;
-    gap: 1rem;
-}
-
-.element-home img {
-    width: 8rem;
-    height: 8rem;
-}
-
-.agree {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 6px;
-    display: flex;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--black);
-}
-
-.two {
-    display: flex;
-} 
-
-.right {
-    width: 80%;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}  
-
-.full {
-    grid-column: 1/3;
-} 
-
-.end {
-    border-right: none;
 }
 
 /* Responsive Design */
 
+/* For large screens */
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card__element img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .card__element--add {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .tasks__actions {
+        width: 90%;
+    }
+
+    .card--full {
+        grid-column: 1 / 2;
+    }
+}
+
 /* For tablets */
 @media (max-width: 768px) {
     .cards-container {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .element-home img {
-        width: 6rem;
-        height: 6rem;
+    .card__element img {
+        width: 8rem;
+        height: 8rem;
     }
 
-    .agree {
-        width: 6rem;
-        height: 6rem;
+    .card__element--add {
+        width: 8rem;
+        height: 8rem;
     }
 
-    .right {
+    .tasks__actions {
         width: 100%;
     }
 
-    .full {
+    .card--full {
         grid-column: 1 / 2;
     }
 }
 
 /* For mobile phones */
-@media (max-width: 480px) {
+@media (max-width: 420px) {
     .cards-container {
         grid-template-columns: repeat(1, 1fr);
         gap: var(--spacing-small);
     }
 
-    .card-home {
+    .card {
         padding: 0.5rem;
-        border-width: 1px;
+        border-width: 0.1rem;
         min-width: 1rem;
     }
 
-    .elements-container {
+    .cardElements {
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    .element-home img {
+    .card__element img {
         width: 5rem;
         height: 5rem;
     }
 
-    .agree {
+    .card__element--add {
         width: 5rem;
         height: 5rem;
         font-size: 0.8rem;
     }
 
-    .two {
+    .card--task {
         flex-direction: column;
     }
 
-    .right {
+    .tasks__actions {
         width: 100%;
         gap: 0.5rem;
     }
