@@ -60,7 +60,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .container {
     display: flex;
     width: 100vw;
@@ -68,7 +67,7 @@ body {
     background-color: var(--basic-white);
 }
 
-.login__container {
+.login {
     width: 50%;
     display: flex;
     margin-top: 6rem;
@@ -79,13 +78,13 @@ body {
     background-color: var(--basic-white);
 }
 
-.logo__container {
+.login__logo{
     width: 8rem;
     margin-bottom: 2rem;
     align-items: flex-start;
 }
 
-.title__container {
+.login__title {
     font-size: 2.4rem;
     font-weight: 700;
     font-style: italic;
@@ -93,14 +92,14 @@ body {
     color: var(--basic-black);
 }
 
-.subtitle__container {
+.login__subtitle{
     font-size: 2.4rem;
     color: var(--basic-gray-750);
     margin-bottom: 2rem;
     text-align: left;
 }
 
-.welcome__container {
+.login__welcome {
     font-size: 2rem;
     margin-bottom: 2rem;
     border-bottom: 0.02rem solid;
@@ -118,7 +117,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.form__input {
+.login__form-input {
     width: 100%;
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -127,14 +126,14 @@ body {
     font-size: 1.4rem;
 }
 
-.forgot_password {
+.login__forgot-password {
     text-decoration: none;
     color: var(--basic-gray-750);
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
 }
 
-.login-button__form {
+.login__button{
     width: 100%;
     padding: 1.2rem;
     background-color: var(--primary-color-950);
@@ -146,14 +145,14 @@ body {
     text-decoration: none;
 }
 
-.welcome__cart {
+.cart__welcome {
     width: 100%;
     text-align: center;
     background-color: var(--primary-color-950);
     padding: 4rem 4rem;
 }
 
-.title__cart {
+.cart__title {
     padding: 3rem;
     font-size: 2.4rem;
     font-weight: bold;
@@ -164,7 +163,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.subtitle__cart {
+.cart__subtitle {
     font-size: 2rem;
     font-weight: bold;
     text-align: left;
@@ -172,25 +171,25 @@ body {
     margin-bottom: 2rem;
 }
 
-.info__cart {
+.cart__info {
     display: flex;
     justify-content: space-between;
 }
 
-.cart__box {
+.cart__info-box{
     width: 50%;
     padding: 1rem;
     color: var(--Blanco);
     text-align: left;
 }
 
-.information__title {
+.cart__info-title {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
-.information__paraghraph {
+.cart__info-paragraph {
     font-size: 1.6rem;
     line-height: 1.5;
 }
@@ -201,66 +200,66 @@ body {
     padding: 1rem;
 }
 
-.super__cart {
+.cart {
     display: flex;
     flex-direction: column;
     margin-right: 0;
 }
 
-.super__container {
+.super-container {
     display: flex;
     flex-direction: row;
 }
 
-.image-campesino {
+.cart__image {
     width: 100%;
     height: 100%;
 }
 
 /* Large screens */
 @media (max-width: 1200px) {
-    .login__container {
+    .login {
         width: 60%;
         padding: 3rem;
     }
 
-    .title__container {
+    .login__title{
         font-size: 2.2rem;
     }
 
-    .subtitle__container {
+    .login__subtitle {
         font-size: 2.2rem;
     }
 
-    .welcome__container {
+    .login__welcome {
         font-size: 1.8rem;
     }
 
-    .form__label {
+    .login__form-label {
         font-size: 1.8rem;
     }
 
-    .form__input {
+    .login__form-input {
         font-size: 1.2rem;
     }
 
-    .login-button__form {
+    .login__button {
         font-size: 1.4rem;
     }
 
-    .title__cart {
+    .cart__title {
         font-size: 2.2rem;
     }
 
-    .subtitle__cart {
+    .cart__subtitle {
         font-size: 1.8rem;
     }
 
-    .information__title {
+    .cart__info {
         font-size: 1.6rem;
     }
 
-    .information__paraghraph {
+    .cart__info-paragraph {
         font-size: 1.4rem;
     }
 }
@@ -277,28 +276,28 @@ body {
         padding: 1rem;
     }
 
-    .login__container {
+    .login {
         width: 100%;
         padding: 2rem;
         margin-top: 2rem;
     }
 
-    .logo__container {
+    .login__logo {
         width: 6rem;
         margin-bottom: 1.5rem;
     }
 
-    .title__container {
+    .login__title{
         font-size: 2rem;
         margin-bottom: 1rem;
     }
 
-    .subtitle__container {
+    .login__subtitle {
         font-size: 2rem;
         text-align: left;
     }
 
-    .welcome__container {
+    .login__welcome {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
     }
@@ -312,48 +311,48 @@ body {
         font-size: 1.8rem;
     }
 
-    .form__input {
+    .login__form-input {
         font-size: 1.6rem;
         padding: 0.8rem;
     }
 
-    .forgot_password {
+    .login__forgot-password {
         font-size: 1.4rem;
         margin-bottom: 1rem;
     }
 
-    .login-button__form {
+    .login__button {
         padding: 1rem;
         font-size: 1.4rem;
     }
 
-    .welcome__container {
+    .login__welcome {
         padding: 2rem;
     }
 
-    .title__cart {
+    .cart__title {
         margin-left: 25rem;
         font-size: 2rem;
         margin-bottom: 1rem;
         margin-top: 2rem;
     }
 
-    .subtitle__cart {
+    .cart__subtitle {
         font-size: 1.8rem;
         margin-bottom: 1rem;
     }
 
-    .info__cart {
+    .cart__info {
         flex-direction: column;
         align-items: center;
     }
 
-    .cart__box {
+    .cart__info-box {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .image-campesino {
+    .cart__image {
         width: 100%;
         height: auto;
     }
@@ -371,28 +370,28 @@ body {
         padding: 1rem;
     }
 
-    .login__container {
+    .login {
         width: 100%;
         padding: 1.5rem;
         margin-top: 1.5rem;
     }
 
-    .logo__container {
+    .login__logo {
         width: 5rem;
         margin-bottom: 1.2rem;
     }
 
-    .title__container {
+    .login__title {
         font-size: 1.8rem;
         margin-bottom: 0.8rem;
     }
 
-    .subtitle__container {
+    .login__subtitle {
         font-size: 1.8rem;
         margin-bottom: 1rem;
     }
 
-    .welcome__container {
+    .login__welcome {
         font-size: 1.6rem;
         margin-bottom: 1rem;
     }
@@ -402,52 +401,54 @@ body {
         max-width: 100%;
     }
 
-    .form__label {
+    .login__form-label {
         font-size: 1.6rem;
     }
 
-    .form__input {
+    .login__form-input {
         font-size: 1.4rem;
         padding: 0.6rem;
     }
 
-    .forgot_password {
+    .login__forgot-password {
         font-size: 1.2rem;
         margin-bottom: 1rem;
     }
 
-    .login-button__form {
+    .login__button {
         padding: 0.8rem;
         font-size: 1.2rem;
     }
 
-    .welcome__container {
+    .login__welcome {
         padding: 1.5rem;
     }
 
-    .title__cart {
+    .cart__title {
         margin-left: 20rem;
         font-size: 1.8rem;
         margin-bottom: 0.8rem;
     }
 
-    .subtitle__cart {
+    .cart__subtitle {
         font-size: 1.6rem;
         margin-bottom: 1rem;
     }
 
-    .info__cart {
+    .cart__info {
         flex-direction: column;
         align-items: center;
     }
 
-    .cart__box {
+    .cart__info-box {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .image-campesino {
+    .cart__image {
         width: 100%;
         height: auto;
     }
 }
+
+
