@@ -154,6 +154,10 @@ form{
     margin-top: 1rem;
     text-decoration: none;
 }
+.form__button--enviar{
+    color: var(--Blanco);
+    text-decoration: none;
+}
 
 .form__button:hover{
     background-color: var(--primary-color-950);
