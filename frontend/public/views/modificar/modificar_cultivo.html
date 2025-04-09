@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de ciclo de cultivos</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+    </aside>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <h1 class="content__title">Modificar Cultivo</h1>
+                <p class="content__subtitle">Modificar un cultivo en la Granja Agrícola Lembo</p>
+                
+                <div class="form-container">
+                    <form class="form">
+                        <div class="form__grid">
+                            <div class="form__group">
+                                <label class="form__label">Identificador del Cultivo *</label>
+                                <input type="text" class="form__input" placeholder="Ingrese el ID del cultivo" pattern="\d+" title="Solo se permiten números">
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Nombre del Cultivo *</label>
+                                <input type="text" class="form__input" placeholder="Ingrese el nombre del cultivo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Tipo de Cultivo *</label>
+                                <select class="form__input" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="hortalizas">Hortalizas</option>
+                                    <option value="frutas">Frutas</option>
+                                    <option value="cereales">Cereales</option>
+                                    <option value="legumbres">Legumbres</option>
+                                    <option value="tuberculos">Tubérculos</option>
+                                </select>
+                                
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Tamaño *</label>
+                                <input type="text" class="form__input" placeholder="Ingrese el tamaño">
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Ubicación *</label>
+                                <input type="text" class="form__input" placeholder="Ingrese la ubicación">
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Estado *</label>
+                                <select class="form__select" required>
+                                    <option value="activo">Activo</option>
+                                    <option value="inhabilitado">Inhabilitar</option>
+                                </select>
+                            </div>
+                            
+    
+                            <div class="form__group">
+                                <label class="form__label">Descripción *</label>
+                                <input type="text" class="form__input" placeholder="Ingrese la Descripción">
+                            </div>
+    
+                            <div class="form__group">
+                                <label class="form__label">Fotografía</label>
+                                <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
+                            </div>
+                        </div>
+                        <div class="form__end">
+                            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+                            <button type="submit" class="form__register-btn">Modificar Cultivo</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <button type="button" class="content__back-btn" onclick="location.href='../gestion/cultivos.html'">VOLVER</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
