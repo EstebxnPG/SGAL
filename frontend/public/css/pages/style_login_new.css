@@ -1,50 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root {
-    /* medidas de REM */
-    font-size: 62.5%; 
-
-    /* Basic */
-    --Blanco:#ffffff;
-    --Negro:#000000;
-
-    /* colores primarios */
-    --primary-color-50: #EDF7E8;
-    --primary-color-100: #DBEFB9;
-    --primary-color-200: #C9E8B9;
-    --primary-color-300: #B7E0A2;
-    --primary-color-400: #A5D88B;
-    --primary-color-500: #93D074;
-    --primary-color-600: #81C85D;
-    --primary-color-700: #6FC046;
-    --primary-color-800: #5DD12E;
-    --primary-color-900: #4BBD17;
-    --primary-color-950: #39A900;
-
-    /* colores secundarios */
-    --secundary-color-50: #E8ECEF;
-    --secundary-color-100: #D1DBDF;
-    --secundary-color-200: #B9C7CE;
-    --secundary-color-300: #A2B4BE;
-    --secundary-color-400: #8B9DD6;
-    --secundary-color-500: #748E9E;
-    --secundary-color-600: #5D7B8E;
-    --secundary-color-700: #46687E;
-    --secundary-color-800: #2E566D;
-    --secundary-color-900: #17435D;
-    --secundary-color-950: #00304D;
-
-    /* básicos */
-    --basic-white: #FFFFFF;
-    --basic-black: #000000;
-    --basic-orange-900: #FDC817;
-    --basic-gray-950: #313131;
-    --basic-gray-750: #626262;
-    --basic-gray-550: #949494;
-    --basic-gray-350: #C5C5C5;
-    --basic-gray-150: #F6F6F6;
-
-}
+@import url('../variables.css');
 
 * {
     font-family: "Work Sans", sans-serif;
