@@ -107,6 +107,11 @@ form{
     background-color: var(--primary-color-950);
 }
 
+.form__button--enviar{
+    text-decoration: none;
+    color: var(--Blanco);
+}
+
 .form__button--secondary{
     width: 75%;
     padding: 1rem;
