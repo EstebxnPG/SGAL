@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('../variables_2.0.css');
+@import url('../variables.css');
 
 * {
     margin: 0;
@@ -586,7 +586,7 @@ svg {
     text-align: center;
 }
 
-.cardElements {
+.card__box {
     display: flex;
     padding-top: 1rem;
     gap: 1rem;
