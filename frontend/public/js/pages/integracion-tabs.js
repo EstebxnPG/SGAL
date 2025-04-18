@@ -1,9 +1,9 @@
+
 const tabs = document.querySelectorAll('.form__tab');
 const steps = document.querySelectorAll('.form__step');
 const nextBtns = document.querySelectorAll('.form__next');
 const prevBtns = document.querySelectorAll('.form__prev');
 
-// Cambio por Tabs
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => {
     tabs.forEach(t => t.classList.remove('form__tab--active'));
@@ -14,14 +14,26 @@ tabs.forEach((tab, index) => {
   });
 });
 
-// Botón Siguiente
 nextBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const currentStep = btn.closest('.form__step');
     const nextStep = currentStep.nextElementSibling;
     const currentIndex = Array.from(steps).indexOf(currentStep);
 
-    if(nextStep){
+    let valid = true;
+
+    if(currentIndex === 0){ // Solo en GENERALES
+      const requiredInputs = currentStep.querySelectorAll('input');
+
+      requiredInputs.forEach(input => {
+        if (!input.checkValidity()) {
+          input.reportValidity();
+          valid = false;
+        }
+      });
+    }
+
+    if(valid && nextStep){
       steps.forEach(s => s.classList.remove('form__step--active'));
       tabs.forEach(t => t.classList.remove('form__tab--active'));
 
@@ -31,7 +43,6 @@ nextBtns.forEach(btn => {
   });
 });
 
-// Botón Atrás
 prevBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const currentStep = btn.closest('.form__step');

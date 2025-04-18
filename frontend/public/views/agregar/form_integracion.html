@@ -35,8 +35,8 @@
               <!-- PASO 1 - Generales -->
               <div class="form__step form__step--active">
                 <div class="form__group">
-                  <label class="form__label">Nombre de la integracion *</label>
-                  <input type="text" class="form__input form__input--name" placeholder="Digite el nombre de la integración" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required maxlength="25">
+                  <label class="form__label">Nombre de la integración *</label>
+                  <input type="text" class="form__input form__input--name" placeholder="Digite el nombre de la integración" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required maxlength="15" minlength="3">
                 </div>
       
                 <div class="form__group">
@@ -71,7 +71,7 @@
                     <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
                 </div>
       
-                <button type="button" class="form__next ">Siguiente</button>
+                <button type="button" class="form__next">Siguiente</button>
               </div>
       
               <!-- PASO 2 - Sensores -->
@@ -87,10 +87,12 @@
                       <button type="button" class="form__btn--dlt">Suprimir Sensor</button>
                       <button type="button" class="form__add-btn">Agregar Sensores</button>
                     </div>
+                    
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
                     </div>
+                    
               </div>
       
               <!-- PASO 3 - Insumos -->
@@ -101,10 +103,12 @@
                       <option value="">Insumo 2</option>
                       <option value="">Insumo 3</option>
                     </select>
+                    
                     <div>
                       <button type="button" class="form__btn--dlt">Suprimir Insumo</button>
                       <button type="button" class="form__add-btn">Agregar Sensor</button>
                     </div>
+                    <div class="form__group"><h3>Gasto estimado: 24.500</h3></div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
@@ -143,7 +147,7 @@
                     </div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
-                        <button type="button" class="form__next">GUARDAR INTEGRACIÓN</button>
+                        <button type="submit" class="form__next">GUARDAR INTEGRACIÓN</button>
                     </div>
               </div>
             </form>
@@ -152,8 +156,8 @@
       </main>
       
 <script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
-    <script src="/frontend/public/js/validaciones_agregar.js"></script>
     <script src="/frontend/public/js/pages/integracion-tabs.js"></script>
 </body>
+
 
 </html>
