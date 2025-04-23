@@ -91,12 +91,12 @@ body {
 
 .form__button {
     width: 100%;
-    padding: var(--spacing-medium);
+    padding: 1.2rem 2.4rem;
     background-color: var(--primary-color-950);
     color: var(--basic-white);
     border: none;
     border-radius: var(--border-radius-small);
-    font-size: var(--font-subtitle);
+    font-size: var(--font-paragraph);
     cursor: pointer;
     text-decoration: none;
 }
