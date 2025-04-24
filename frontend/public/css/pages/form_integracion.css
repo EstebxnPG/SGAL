@@ -1,4 +1,4 @@
 @import url('../variables.css');
-.form__item{
+span{
     font-size: var(--font-paragraph);
 }
