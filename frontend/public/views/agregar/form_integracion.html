@@ -30,7 +30,7 @@
               <button type="button" class="form__tab">Operadores</button>
             </div>
       
-            <form class="form" method="POST" action="http://localhost:3000/ciclo_cultivo">
+            <form class="form" method="POST" action="http://localhost:3000/integracion">
       
               <!-- PASO 1 - Generales -->
               <div class="form__step form__step--active">
@@ -39,14 +39,12 @@
                   <input type="text" class="form__input form__input--name" placeholder="Digite el nombre de la integración" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required maxlength="15" minlength="3">
                 </div>
       
-                <div class="form__group">
-                    <label class="form__label">Cultivo</label>
-                    <select class="form__input">
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                    </select>
-                </div>
+                  <div class="form__group">
+                      <label class="form__label">Cultivo</label>
+                      <select class="form__input" id="cultivo" name="cultivo_id">
+                        <!-- Opciones dinámicas -->
+                      </select>
+                  </div>
                 
                 <div class="form__group">
                     <label class="form__label">Estado *</label>
@@ -89,21 +87,22 @@
                   </a>
                 </label>
                 
-                    <select class="form__input">
-                      <option value="">Sensores 1</option>
-                      <option value="">Sensores 2</option>
-                      <option value="">Sensores 3</option>
-                      
-                    </select>
+                <select id="sensor" name="sensor_id" class="form__input" multiple>
+                  <option value="">Cargando sensores...</option>
+                </select>
+
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Sensor</button>
-                      <button type="button" class="form__add-btn">Agregar Sensores</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarSensor">Agregar Sensores</button>
                     </div>
+                    <div id="lista_sensores" class="form__group"></div>
+
                     
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
                     </div>
+                    
                     
               </div>
       
@@ -120,16 +119,16 @@
                     </svg>
                   </a>
                 </label>
-                    <select class="form__input">
-                      <option value="">Insumo 1</option>
-                      <option value="">Insumo 2</option>
-                      <option value="">Insumo 3</option>
-                    </select>
+                <select id="insumo" name="insumo_id" class="form__input" multiple>
+                  <option value="">Cargando insumos...</option>
+                </select>
                     
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Insumo</button>
-                      <button type="button" class="form__add-btn">Agregar Sensor</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarInsumo">Agregar Sensor</button>
                     </div>
+                    <div id="lista_insumos" class="form__group"></div>
+
                     <div class="form__group"><h3>Gasto estimado: 24.500</h3></div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
@@ -148,15 +147,14 @@
                     <path d="M12 9v6"></path>
                   </svg>
                 </label>
-                    <select class="form__input">
-                      <option value="">Ciclo 1</option>
-                      <option value="">Ciclo 2</option>
-                      <option value="">Ciclo 3</option>
-                    </select>
+                <select id="ciclo_cultivo" name="ciclo_cultivo_id" class="form__input" multiple>
+                  <option value="">Cargando Ciclo cultivos...</option>
+                </select>
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Ciclo Cultivo</button>
-                      <button type="button" class="form__add-btn">Agregar Ciclo Cultivo</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarCicloCultivo">Agregar Ciclo Cultivo</button>
                     </div>
+                    <div id="lista_ciclos" class="form__group"></div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
@@ -174,15 +172,15 @@
                     <path d="M12 9v6"></path>
                   </svg>
                 </label>
-                    <select class="form__input">
-                      <option value="">Operador 1</option>
-                      <option value="">Operador 2</option>
-                      <option value="">Operador 3</option>
-                    </select>
+                <select id="operadores" name="operadores_id" class="form__input" multiple>
+                  <option value="">Cargando Operadores...</option>
+                </select>
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Operador</button>
-                      <button type="button" class="form__add-btn">Agregar Operador</button>
+        
+                      <button type="button" class="form__add-btn" id="agregarOperadores">Agregar Operador</button>
                     </div>
+                    <div id="lista_operadores" class="form__group"></div>
+
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="submit" class="form__next">GUARDAR INTEGRACIÓN</button>
@@ -195,6 +193,8 @@
       
 <script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
     <script src="/frontend/public/js/pages/integracion-tabs.js"></script>
+    <script src="/frontend/public/js/pages/integracion-llenar.js"></script>
+    <script src="/frontend/public/js/pages/integracion.js"></script>
 </body>
 
 

@@ -75,3 +75,51 @@ CREATE TABLE `usuario` (
 ALTER TABLE `usuario` 
 ADD COLUMN `contrasena` VARCHAR(255) NOT NULL AFTER `correo`;
 
+/* INTEGRACIÓN  */
+CREATE TABLE integracion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  cultivo_id INT,
+  estado ENUM('Activo', 'Inactivo') NOT NULL,
+  fecha_inicial DATE NOT NULL,
+  fecha_final DATE NOT NULL,
+  fotografia VARCHAR(255),
+  FOREIGN KEY (cultivo_id) REFERENCES cultivo(id)
+);
+
+-- Relación con sensores (ajustada a tu estructura)
+CREATE TABLE IF NOT EXISTS integracion_sensor (
+    integracion_id INT,
+    sensor_id INT UNSIGNED,
+    PRIMARY KEY (integracion_id, sensor_id),
+    FOREIGN KEY (integracion_id) REFERENCES integracion(id) ON DELETE CASCADE,
+    FOREIGN KEY (sensor_id) REFERENCES sensor(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Relación con insumos
+CREATE TABLE IF NOT EXISTS integracion_insumo (
+    integracion_id INT,
+    insumo_id INT UNSIGNED,
+    cantidad DECIMAL(10,2) NOT NULL DEFAULT 1,
+    PRIMARY KEY (integracion_id, insumo_id),
+    FOREIGN KEY (integracion_id) REFERENCES integracion(id) ON DELETE CASCADE,
+    FOREIGN KEY (insumo_id) REFERENCES insumo(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Relación con ciclos de cultivo
+CREATE TABLE IF NOT EXISTS integracion_ciclo_cultivo (
+    integracion_id INT,
+    ciclo_cultivo_id INT UNSIGNED,
+    PRIMARY KEY (integracion_id, ciclo_cultivo_id),
+    FOREIGN KEY (integracion_id) REFERENCES integracion(id) ON DELETE CASCADE,
+    FOREIGN KEY (ciclo_cultivo_id) REFERENCES ciclo_cultivo(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Relación con operadores
+CREATE TABLE IF NOT EXISTS integracion_operador (
+    integracion_id INT,
+    operador_id INT UNSIGNED,
+    PRIMARY KEY (integracion_id, operador_id),
+    FOREIGN KEY (integracion_id) REFERENCES integracion(id) ON DELETE CASCADE,
+    FOREIGN KEY (operador_id) REFERENCES usuario(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

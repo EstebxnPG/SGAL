@@ -27,6 +27,18 @@ const registrarSensor = (req, res) => {
   });
 };
 
+// Función para obtener todos los sensores
+const obtenerSensores = (req, res) => {
+  db.query('SELECT id, nombre FROM sensor', (err, result) => {
+    if (err) {
+      console.error('❌ Error al obtener sensores:', err);
+      return res.status(500).json({ error: 'Error al obtener sensores' });
+    }
+    res.json(result); // Esto devolverá los datos de los sensores
+  });
+};
+
 module.exports = {
-  registrarSensor
+  registrarSensor,
+  obtenerSensores
 };

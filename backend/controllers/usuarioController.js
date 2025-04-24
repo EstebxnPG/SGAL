@@ -26,7 +26,16 @@ const registrarUsuario = (req, res) => {
     });
   });
 };
-
+const obtenerOperadores = (req, res) => {
+  db.query('SELECT id, nombre FROM usuario', (err, result) => {
+    if (err) {
+      console.error('❌ Error al obtener usuarios:', err);
+      return res.status(500).json({ error: 'Error al obtener usuarios' });
+    }
+    res.json(result); // Esto devolverá los datos de los usuarios
+  });
+};
 module.exports = {
-  registrarUsuario
+  registrarUsuario,
+  obtenerOperadores
 };

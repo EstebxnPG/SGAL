@@ -35,6 +35,16 @@ const registrarCultivo = (req, res) => {
   });
 };
 
+const obtenerCultivos = (req, res) => {
+  db.query('SELECT id, nombre FROM cultivo', (err, result) => {
+    if (err) {
+      console.error('❌ Error al obtener cultivos:', err);
+      return res.status(500).json({ error: 'Error al obtener cultivos' });
+    }
+    res.json(result); // Esto devolverá los datos de los cultivos
+  });
+};
 module.exports = {
-  registrarCultivo
+  registrarCultivo,
+  obtenerCultivos
 };

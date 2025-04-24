@@ -34,7 +34,16 @@ const registrarInsumo = (req, res) => {
     });
   });
 };
-
+const obtenerInsumos = (req, res) => {
+  db.query('SELECT id, nombre FROM insumo', (err, result) => {
+    if (err) {
+      console.error('❌ Error al obtener insumos:', err);
+      return res.status(500).json({ error: 'Error al obtener insumos' });
+    }
+    res.json(result); // Esto devolverá los datos de los insumos
+  });
+};
 module.exports = {
-  registrarInsumo
+  registrarInsumo,
+  obtenerInsumos
 };
