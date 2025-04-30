@@ -7,9 +7,8 @@
     <title>Gestión de ciclo de cultivos</title>
     <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
     <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
-
+    <link rel="stylesheet" href="/frontend/public/css/components/modal-integracion.css">
     <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
-    
 </head>
 
 <body>
@@ -19,11 +18,11 @@
         <section class="content">
             <div class="content__container">
                 <h1 class="content__title">Integración</h1>
-                
+
                 <div class="form-container">
                     <form class="form" method="POST">
                         <div class="form__grid">
-                            
+
                             <div class="form__groups">
                                 <label class="form__label">Id de la integración *</label>
                                 <p>1</p>
@@ -48,7 +47,7 @@
                                 <label class="form__label">Fecha final *</label>
                                 <p>23/04/22</p>
                             </div>
-  
+
                             <div class="form__groups">
                                 <label class="form__label">Usuarios:</label>
                                 <p>Manuel</p>
@@ -88,17 +87,30 @@
                         </div>
                         <div class="form__end">
                             <p class="form__mandatory-text">Opciones:</p>
-                            
-                            
+
                             <button class="user-card__edit-btn" onclick="location.href='modificar/modificar_integración.html'">Editar</button>
                             <button class="user-card__delete-btn">Eliminar</button>
+
+                            <!-- Botón para abrir el modal -->
+                            <button type="button" class="abrir-modal-btn" onclick="abrirModal()">Ver más</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
-<script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
+
+    <!-- Modal de integración -->
+    <div id="modalIntegracion" class="modal">
+        <div class="modal__contenido">
+            <span class="modal__cerrar" onclick="cerrarModal()">&times;</span>
+            <h2>Detalles de la Integración</h2>
+            <p>Aquí puedes mostrar más información o confirmar una acción.</p>
+        </div>
+    </div>
+
+    <script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
+    <script src="/frontend/public/js/pages/modal-integracion.js"></script>
 </body>
 
 </html>
