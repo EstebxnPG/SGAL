@@ -26,7 +26,7 @@ const obtenerCicloCultivos = (req, res) => {
         console.error('❌ Error al obtener ciclo de cultivos:', err);
         return res.status(500).json({ error: 'Error al obtener ciclo de cultivos' });
       }
-      res.json(result); // Esto devolverá los datos de los cultivos
+      res.json(result); 
     });
   };
 
