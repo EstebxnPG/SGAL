@@ -18,19 +18,3 @@
     }
   });
 
-  function abrirModal() {
-    document.getElementById('modalIntegracion').style.display = 'block';
-}
-
-function cerrarModal() {
-    document.getElementById('modalIntegracion').style.display = 'none';
-}
-
-window.onclick = function (event) {
-    const modal = document.getElementById('modalIntegracion');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
-
-
