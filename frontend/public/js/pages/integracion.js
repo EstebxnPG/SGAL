@@ -88,42 +88,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // Envío del formulario
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+    
+      const formData = new FormData();
+      formData.append('nombre', document.querySelector('.form__input--name').value);
+      formData.append('cultivo_id', document.getElementById('cultivo').value);
+      formData.append('estado', document.querySelector('.form__input--state').value);
+      formData.append('fecha_inicial', document.querySelector('.form__input--inicial').value);
+      formData.append('fecha_final', document.querySelector('.form__input--final').value);
       
-      const formData = {
-        nombre: document.querySelector('.form__input--name').value,
-        cultivo_id: document.getElementById('cultivo').value,
-        estado: document.querySelector('.form__input--state').value,
-        fecha_inicial: document.querySelector('.form__input--inicial').value,
-        fecha_final: document.querySelector('.form__input--final').value,
-        fotografia: null, // Implementar subida de imagen si es necesario
-        ...integracionData
-      };
-  
+      const fileInput = document.getElementById('fotografia');
+      if (fileInput.files.length > 0) {
+        formData.append('fotografia', fileInput.files[0]);
+      }
+    
+      // Agregar datos adicionales de integración (si es necesario)
+      for (const key in integracionData) {
+        formData.append(key, JSON.stringify(integracionData[key]));
+      }
+    
       try {
         const response = await fetch('http://localhost:3000/integracion', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+          body: formData
         });
-  
+    
         const data = await response.json();
-  
+    
         if (!response.ok) {
           throw new Error(data.error || 'Error al crear integración');
         }
-  
+    
         alert('Integración creada exitosamente!');
         window.location.href = '/frontend/public/views/gestion/integracion.html';
         form.reset();
-        // Resetear datos
         Object.keys(integracionData).forEach(key => integracionData[key] = []);
         document.querySelectorAll('[id^="lista_"]').forEach(el => el.innerHTML = '');
-        
+    
       } catch (error) {
         console.error('Error:', error);
         alert(error.message);
       }
     });
+    
   });
   
   function addToList(listId, text, value, type) {
@@ -200,28 +206,44 @@ function renderizarIntegraciones(integraciones) {
 }
 
 function crearCardIntegracion(integracion) {
-    const card = document.createElement('div');
-    card.className = 'user-card';
-    
-    card.innerHTML = `
-        <a href="/frontend/public/views/ver_integracion.html?id=${integracion.id}" class="card__integracion">
-            <div class="user-card__avatar">
-                <img src="${integracion.fotografia || '/frontend/public/img/integrados_cultivos.jpg'}" alt="Integración">
-            </div>
-            <div class="user-card__info">
-                <div class="user-card__id"><p><b>ID:</b> ${integracion.id}</p></div>
-                <div class="user-card__name"><p><b>Integracion:</b> ${integracion.nombre|| 'No asignado'}</p></div>
-                <div class="user-card__role"><p><b>Cultivo:</b> ${integracion.cultivo_nombre || 'No especificada'}</p></div>
-                <div class="user-card__status"><p><b>Estado:</b> ${integracion.estado.toUpperCase()}</p></div>
-            </div>
-        </a>
-        <div class="user-card__actions">
-            <button class="user-card__edit-btn" onclick="location.href='../modificar/modificar_integración.html?id=${integracion.id}'">Editar</button>
-            <button class="user-card__delete-btn" onclick="eliminarIntegracion(${integracion.id})">Eliminar</button>
-        </div>
-    `;
-    
-    return card;
+  const card = document.createElement('div');
+  card.className = 'user-card';
+  
+  // Construir la URL de la imagen con manejo de errores
+  const imagenUrl = integracion.fotografia 
+      ? `http://localhost:3000/uploads/${integracion.fotografia}`
+      : '/frontend/public/img/integrados_cultivos.jpg';
+
+  // Manejo seguro del estado (por si es undefined)
+  const estado = integracion.estado ? integracion.estado.toUpperCase() : 'SIN ESTADO';
+
+  card.innerHTML = `
+      <a href="/frontend/public/views/ver_integracion.html?id=${integracion.id}" class="card__integracion">
+          <div class="user-card__avatar">
+              <img src="${imagenUrl}" 
+                   alt="Imagen de ${integracion.nombre || 'Integración'}"
+                   onerror="this.onerror=null;this.src='/frontend/public/img/integrados_cultivos.jpg'">
+          </div>
+          <div class="user-card__info">
+              <div class="user-card__id"><p><b>ID:</b> ${integracion.id}</p></div>
+              <div class="user-card__name"><p><b>Integración:</b> ${integracion.nombre || 'No asignado'}</p></div>
+              <div class="user-card__role"><p><b>Cultivo:</b> ${integracion.cultivo_nombre || 'No especificado'}</p></div>
+              <div class="user-card__status"><p><b>Estado:</b> ${estado}</p></div>
+          </div>
+      </a>
+      <div class="user-card__actions">
+          <button class="user-card__edit-btn" 
+                  onclick="location.href='../modificar/modificar_integración.html?id=${integracion.id}'">
+              Editar
+          </button>
+          <button class="user-card__delete-btn" 
+                  onclick="eliminarIntegracion(${integracion.id}, this)">
+              Eliminar
+          </button>
+      </div>
+  `;
+  
+  return card;
 }
 
 async function eliminarIntegracion(id) {

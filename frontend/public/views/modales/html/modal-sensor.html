@@ -1,0 +1,27 @@
+<!-- modal-sensor.html -->
+<div class="modal" id="sensorModal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      
+      <div class="form-container">
+        <form class="form" id="modalSensorForm" action="http://localhost:3000/sensor" method="POST">
+          <h2 class="modal-title">Agregar Sensor</h2>
+          
+          <div class="form__grid">
+            <!-- Copia aquí todo el contenido del formulario de form_sensor.html -->
+            <div class="form__group">
+              <label class="form__label">Nombre del sensor *</label>
+              <input type="text" class="form__input form__input--nombre" placeholder="Digite el nombre del sensor" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+            </div>
+  
+            <!-- ... resto de los campos del formulario ... -->
+          </div>
+  
+          <div class="form__end">
+            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+            <button type="submit" class="form__register-btn">Registrar Sensor</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

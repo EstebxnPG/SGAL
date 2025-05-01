@@ -1,22 +1,55 @@
 const db = require('../config/db');
+const path = require('path');
+const fs = require('fs');
+
+// Configura Multer para mantener extensiones
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadPath = path.join(__dirname, '../uploads');
+    // Crear directorio si no existe
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + uniqueSuffix + ext);
+  }
+});
+
+const upload = multer({ storage: storage });
 
 const crearIntegracion = async (req, res) => {
-  const { 
-    nombre, 
-    cultivo_id, 
-    estado, 
-    fecha_inicial, 
-    fecha_final, 
-    fotografia,
-    sensores = [], 
-    insumos = [], 
-    ciclos = [], 
-    operadores = [] 
+  let {
+    nombre,
+    cultivo_id,
+    estado,
+    fecha_inicial,
+    fecha_final,
+    sensores,
+    insumos,
+    ciclos,
+    operadores
   } = req.body;
+  
+  // 👇 Esto parsea si vienen como strings desde el form-data
+  try {
+    sensores = typeof sensores === 'string' ? JSON.parse(sensores) : (sensores || []);
+    insumos = typeof insumos === 'string' ? JSON.parse(insumos) : (insumos || []);
+    ciclos = typeof ciclos === 'string' ? JSON.parse(ciclos) : (ciclos || []);
+    operadores = typeof operadores === 'string' ? JSON.parse(operadores) : (operadores || []);
+  } catch (err) {
+    return res.status(400).json({ error: 'Error al parsear arrays del cuerpo', detalles: err.message });
+  }
+  
 
-  // Validación básica
+  const fotografia = req.file ? req.file.filename : null; // Aquí tomas el nombre del archivo
+
+  // Validación
   if (!nombre || !estado || !fecha_inicial || !fecha_final) {
-    return res.status(400).json({ 
+    return res.status(400).json({
       error: 'Faltan datos requeridos',
       detalles: {
         nombre: !nombre ? 'Requerido' : undefined,
@@ -30,17 +63,15 @@ const crearIntegracion = async (req, res) => {
   try {
     await db.promise().beginTransaction();
 
-    // 1. Insertar integración principal
     const [result] = await db.promise().query(
       `INSERT INTO integracion 
        (nombre, cultivo_id, estado, fecha_inicial, fecha_final, fotografia)
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [nombre, cultivo_id || null, estado, fecha_inicial, fecha_final, fotografia || null]
+      [nombre, cultivo_id || null, estado, fecha_inicial, fecha_final, fotografia]
     );
 
     const integracionId = result.insertId;
 
-    // 2. Insertar relaciones
     if (sensores.length > 0) {
       await insertarRelaciones('integracion_sensor', integracionId, sensores);
     }
@@ -83,24 +114,31 @@ const crearIntegracion = async (req, res) => {
   } catch (error) {
     await db.promise().rollback();
     console.error('Error al crear integración:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Error interno del servidor',
-      detalles: error.message 
+      detalles: error.message
     });
   }
 };
 
+
 async function insertarRelaciones(tabla, integracionId, items) {
-  if (!items || items.length === 0) return;
+  if (!items || !Array.isArray(items) || items.length === 0) return;
+  
+
+  const values = items.flatMap(item => {
+    const id = item.id || item; 
+    return [integracionId, id];
+  });
   
   const placeholders = items.map(() => '(?, ?)').join(',');
-  const values = items.flatMap(id => [integracionId, id]);
   
   await db.promise().query(
     `INSERT INTO ${tabla} VALUES ${placeholders}`,
     values
   );
 }
+
 const obtenerIntegraciones = async (req, res) => {
   try {
     // Obtener integraciones principales
