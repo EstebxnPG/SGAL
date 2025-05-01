@@ -75,7 +75,7 @@
               <div class="form__step">
                 <label class="form__label form__label--title">
                   Sensores
-                  <a href="/frontend/public/views/agregar/form_sensor.html">
+                  <button type="button" class="form__modal-btn" data-form="/frontend/public/views/agregar/form_sensor.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                          width="38" height="38" stroke-width="2">
@@ -108,7 +108,7 @@
               <!-- PASO 3 - Insumos -->
               <div class="form__step">
                 <label class="form__label">Insumo
-                  <a href="/frontend/public/views/agregar/form_insumo.html">
+                  <button type="button" class="form__modal-btn" data-form="/frontend/public/views/agregar/form_insumo.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                          width="38" height="38" stroke-width="2">
@@ -138,6 +138,7 @@
               <!-- PASO 4 - Ciclos Cultivos -->
               <div class="form__step">
                 <label class="form__label">Ciclo Cultivo
+                  <button type="button" class="form__modal-btn" data-form="/frontend/public/views/agregar/form_ciclo_cultivos.html">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                        width="38" height="38" stroke-width="2">
@@ -163,6 +164,7 @@
               <!-- PASO 5 - Operadores -->
               <div class="form__step">
                 <label class="form__label">Operador
+                  <button type="button" class="form__modal-btn" data-form="/frontend/public/views/agregar/formulario.html">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                        width="38" height="38" stroke-width="2">
@@ -189,11 +191,54 @@
           </div>
         </section>
       </main>
-      
+
+    <!-- ... todo tu contenido anterior se mantiene igual ... -->
+
+<!-- Modal HTML -->
+<div class="modal" id="formModal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <button class="modal__close" id="closeModal">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Scripts existentes -->
 <script src="/frontend/public/js/pages/ciclo_Cultivo.js"></script>
-    <script src="/frontend/public/js/pages/integracion-tabs.js"></script>
-    <script src="/frontend/public/js/pages/integracion-llenar.js"></script>
-    <script src="/frontend/public/js/pages/integracion.js"></script>
+<script src="/frontend/public/js/pages/integracion-tabs.js"></script>
+<script src="/frontend/public/js/pages/integracion-llenar.js"></script>
+<script src="/frontend/public/js/pages/integracion.js"></script>
+
+<!-- Script para abrir el modal -->
+<script>
+  document.querySelectorAll('.form__modal-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-form');
+      const modal = document.getElementById('formModal');
+      const modalBody = document.getElementById('modalBody');
+
+      try {
+        const res = await fetch(url);
+        const html = await res.text();
+        modalBody.innerHTML = html;
+        modal.style.display = 'block';
+      } catch (err) {
+        modalBody.innerHTML = "<p>Error cargando el formulario.</p>";
+        modal.style.display = 'block';
+      }
+    });
+  });
+
+  document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('formModal').style.display = 'none';
+    document.getElementById('modalBody').innerHTML = '';
+  });
+
+  document.querySelector('.modal__overlay').addEventListener('click', () => {
+    document.getElementById('formModal').style.display = 'none';
+    document.getElementById('modalBody').innerHTML = '';
+  });
+</script>
 </body>
 
 
