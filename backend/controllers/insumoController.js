@@ -43,8 +43,6 @@ const obtenerInsumos = (req, res) => {
     res.json(result); // Esto devolverá los datos de los insumos
   });
 };
-
-
 module.exports = {
   registrarInsumo,
   obtenerInsumos

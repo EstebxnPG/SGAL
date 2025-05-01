@@ -101,25 +101,7 @@ async function insertarRelaciones(tabla, integracionId, items) {
     values
   );
 }
-const obtenerIntegraciones = async (req, res) => {
-  try {
-    // Obtener integraciones principales
-    const [integraciones] = await db.promise().query(`
-      SELECT i.*, c.nombre as cultivo_nombre, c.ubicacion 
-      FROM integracion i
-      LEFT JOIN cultivo c ON i.cultivo_id = c.id
-    `);
-
-    res.status(200).json(integraciones);
-  } catch (error) {
-    res.status(500).json({ 
-      error: 'Error interno del servidor',
-      detalles: error.message 
-    });
-  }
-};
 
 module.exports = {
-  crearIntegracion,
-  obtenerIntegraciones
+  crearIntegracion
 };
