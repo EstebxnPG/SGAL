@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
     <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
     <link rel="stylesheet" href="/frontend/public/css/pages/form_integracion.css">
+    <link rel="stylesheet" href="/frontend/public/css/components/modal.css">
     <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
 </head>
 
@@ -72,10 +73,11 @@
               </div>
       
               <!-- PASO 2 - Sensores -->
-              <div class="form__step">
+               
+              <div class="form__step ">
                 <label class="form__label form__label--title">
                   Sensores
-                  <a href="/frontend/public/views/agregar/form_sensor.html">
+                  <a href="#" class="open-modal" data-form-url="/frontend/public/views/agregar/form_sensor.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                          width="38" height="38" stroke-width="2">
@@ -84,6 +86,7 @@
                       <path d="M12 9v6"></path>
                     </svg>
                   </a>
+                  
                 </label>
                 
                 <select id="sensor" name="sensor_id" class="form__input">
@@ -194,7 +197,51 @@
     <script src="/frontend/public/js/pages/integracion-tabs.js"></script>
     <script src="/frontend/public/js/pages/integracion-llenar.js"></script>
     <script src="/frontend/public/js/pages/integracion.js"></script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.open-modal').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const url = btn.dataset.formUrl;
+            const modal = document.getElementById('dynamicModal');
+            const modalBody = document.getElementById('modalBody');
+      
+            try {
+              const response = await fetch(url);
+              const html = await response.text();
+              modalBody.innerHTML = html;
+              modal.style.display = 'block';
+            } catch (err) {
+              modalBody.innerHTML = '<p>Error al cargar el formulario.</p>';
+              modal.style.display = 'block';
+            }
+          });
+        });
+      
+        document.querySelector('.modal .close').addEventListener('click', () => {
+          document.getElementById('dynamicModal').style.display = 'none';
+        });
+      
+        window.addEventListener('click', (e) => {
+          const modal = document.getElementById('dynamicModal');
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      });
+      </script>
+      
+
 </body>
 
+
+<div id="dynamicModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
 
 </html>
