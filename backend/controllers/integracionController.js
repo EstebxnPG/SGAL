@@ -1,6 +1,7 @@
 const db = require('../config/db');
 const path = require('path');
 const fs = require('fs');
+const multer = require('multer');
 
 // Configura Multer para mantener extensiones
 const storage = multer.diskStorage({
@@ -157,7 +158,74 @@ const obtenerIntegraciones = async (req, res) => {
   }
 };
 
+const obtenerIntegracionPorId = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+      // Obtener datos básicos de la integración
+      const [integraciones] = await db.promise().query(`
+          SELECT i.*, c.nombre as cultivo_nombre 
+          FROM integracion i
+          LEFT JOIN cultivo c ON i.cultivo_id = c.id
+          WHERE i.id = ?
+      `, [id]);
+
+      if (integraciones.length === 0) {
+          return res.status(404).json({ error: 'Integración no encontrada' });
+      }
+
+      const integracion = integraciones[0];
+
+      // Obtener sensores asociados
+      const [sensores] = await db.promise().query(`
+          SELECT s.id, s.nombre 
+          FROM integracion_sensor isr
+          JOIN sensor s ON isr.sensor_id = s.id
+          WHERE isr.integracion_id = ?
+      `, [id]);
+
+      // Obtener insumos asociados
+      const [insumos] = await db.promise().query(`
+          SELECT ii.insumo_id as id, i.nombre, ii.cantidad, i.unidad 
+          FROM integracion_insumo ii
+          JOIN insumo i ON ii.insumo_id = i.id
+          WHERE ii.integracion_id = ?
+      `, [id]);
+
+      // Obtener ciclos asociados
+      const [ciclos] = await db.promise().query(`
+          SELECT cc.id, cc.nombre 
+          FROM integracion_ciclo_cultivo icc
+          JOIN ciclo_cultivo cc ON icc.ciclo_cultivo_id = cc.id
+          WHERE icc.integracion_id = ?
+      `, [id]);
+
+      // Obtener operadores asociados
+      const [operadores] = await db.promise().query(`
+          SELECT o.id, o.nombre 
+          FROM integracion_operador io
+          JOIN operador o ON io.operador_id = o.id
+          WHERE io.integracion_id = ?
+      `, [id]);
+
+      res.status(200).json({
+          ...integracion,
+          sensores,
+          insumos,
+          ciclos,
+          operadores
+      });
+
+  } catch (error) {
+      res.status(500).json({ 
+          error: 'Error interno del servidor',
+          detalles: error.message 
+      });
+  }
+};
+
 module.exports = {
   crearIntegracion,
-  obtenerIntegraciones
+  obtenerIntegraciones,
+  obtenerIntegracionPorId
 };
