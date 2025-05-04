@@ -186,11 +186,15 @@ const obtenerIntegracionPorId = async (req, res) => {
 
       // Obtener insumos asociados
       const [insumos] = await db.promise().query(`
-          SELECT ii.insumo_id as id, i.nombre, ii.cantidad, i.unidad 
-          FROM integracion_insumo ii
-          JOIN insumo i ON ii.insumo_id = i.id
-          WHERE ii.integracion_id = ?
-      `, [id]);
+        SELECT 
+            ii.insumo_id as id, 
+            i.nombre, 
+            ii.cantidad, 
+            i.unidad_medida as unidad  /* Nombre correcto de la columna */
+        FROM integracion_insumo ii
+        JOIN insumo i ON ii.insumo_id = i.id
+        WHERE ii.integracion_id = ?
+    `, [id]);
 
       // Obtener ciclos asociados
       const [ciclos] = await db.promise().query(`
@@ -202,11 +206,11 @@ const obtenerIntegracionPorId = async (req, res) => {
 
       // Obtener operadores asociados
       const [operadores] = await db.promise().query(`
-          SELECT o.id, o.nombre 
-          FROM integracion_operador io
-          JOIN operador o ON io.operador_id = o.id
-          WHERE io.integracion_id = ?
-      `, [id]);
+        SELECT u.id, u.nombre 
+        FROM integracion_operador io
+        JOIN usuario u ON io.operador_id = u.id
+        WHERE io.integracion_id = ?
+    `, [id]);
 
       res.status(200).json({
           ...integracion,

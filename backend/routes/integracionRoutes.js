@@ -3,13 +3,18 @@ const router = express.Router();
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
-const { crearIntegracion, obtenerIntegraciones } = require('../controllers/integracionController');
+const { 
+  crearIntegracion, 
+  obtenerIntegraciones,
+  obtenerIntegracionPorId
+} = require('../controllers/integracionController');
 
-// Ruta para crear una integración, incluyendo la subida de una imagen
+// Ruta para crear integración (POST)
 router.post('/', upload.single('fotografia'), crearIntegracion);
 
-// Rutas para obtener integraciones
-router.get('/', obtenerIntegraciones);
-router.get('/integraciones', obtenerIntegraciones);
+// Rutas para obtener integraciones (GET)
+router.get('/', obtenerIntegraciones); // Todas las integraciones
+router.get('/integraciones', obtenerIntegraciones); // Ruta alternativa redundante
+router.get('/:id', obtenerIntegracionPorId); // Integración específica por ID
 
 module.exports = router;
