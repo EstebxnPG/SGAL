@@ -123,3 +123,15 @@ CREATE TABLE IF NOT EXISTS integracion_operador (
     FOREIGN KEY (integracion_id) REFERENCES integracion(id) ON DELETE CASCADE,
     FOREIGN KEY (operador_id) REFERENCES usuario(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE consumo_insumos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  integracion_id INT NOT NULL,
+  operador_id INT NOT NULL,
+  insumo_id INT NOT NULL,
+  cantidad DECIMAL(10,2) NOT NULL,
+  fecha DATETIME NOT NULL,
+  FOREIGN KEY (integracion_id) REFERENCES integracion(id),
+  FOREIGN KEY (operador_id) REFERENCES usuario(id),
+  FOREIGN KEY (insumo_id) REFERENCES insumo(id)
+);
