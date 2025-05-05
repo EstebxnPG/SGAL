@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       window.integracionData[type] = window.integracionData[type].filter(id => id !== value);
     }
-  }
+  }   
   
   function validateStep(step) {
     // Implementar validación para cada paso
