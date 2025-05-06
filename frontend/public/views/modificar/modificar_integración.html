@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
     <link rel="stylesheet" href="/frontend/public/css/pages/form_integracion.css">
     <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="/frontend/public/js/pages/modificar_integracion.js" defer></script>
     
 </head>
 
@@ -30,23 +31,21 @@
               <button type="button" class="form__tab">Personal de apoyo</button>
             </div>
       
-            <form class="form" method="POST" action="http://localhost:3000/ciclo_cultivo">
+            <form class="form" method="POST" action="http://localhost:3000/integracion">
       
               <!-- PASO 1 - Generales -->
               <div class="form__step form__step--active">
                 <div class="form__group">
-                  <label class="form__label">Nombre de la integracion *</label>
-                  <input type="text" class="form__input form__input--name" placeholder="Digite el nombre de la integración" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required maxlength="25">
+                  <label class="form__label">Nombre de la integración *</label>
+                  <input type="text" class="form__input form__input--name" placeholder="Digite el nombre de la integración" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required maxlength="15" minlength="3">
                 </div>
       
-                <div class="form__group">
-                    <label class="form__label">Cultivo</label>
-                    <select class="form__input">
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                    </select>
-                </div>
+                  <div class="form__group">
+                      <label class="form__label">Cultivo</label>
+                      <select class="form__input" id="cultivo" name="cultivo_id">
+                        <!-- Opciones dinámicas -->
+                      </select>
+                  </div>
                 
                 <div class="form__group">
                     <label class="form__label">Estado *</label>
@@ -67,44 +66,74 @@
                 </div>
 
                 <div class="form__group">
-                    <label class="form__label">Fotografía</label>
-                    <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
-                </div>
+                  <label class="form__label">Fotografía</label>
+                  <input type="file" id="fotografia" class="form__input" accept="image/*">
+              </div>
+              <div id="currentPhoto"></div>
       
-                <button type="button" class="form__next ">Siguiente</button>
+                <button type="button" class="form__next">Siguiente</button>
               </div>
       
               <!-- PASO 2 - Sensores -->
-              <div class="form__step">
-                <label class="form__label">Sensores</label>
-                    <select class="form__input">
-                      <option value="">Sensores 1</option>
-                      <option value="">Sensores 2</option>
-                      <option value="">Sensores 3</option>
-                      
-                    </select>
+               
+              <div class="form__step ">
+                <label class="form__label form__label--title">
+                  Sensores
+                  <a href="#" class="open-modal" data-form-url="/frontend/public/views/agregar/form_sensor.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                         width="38" height="38" stroke-width="2">
+                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                      <path d="M9 12h6"></path>
+                      <path d="M12 9v6"></path>
+                    </svg>
+                  </a>
+                  
+                </label>
+                
+                <select id="sensor" name="sensor_id" class="form__input">
+                  <option value="">Cargando sensores...</option>
+                </select>
+
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Sensor</button>
-                      <button type="button" class="form__add-btn">Agregar Sensores</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarSensor">Agregar Sensores</button>
                     </div>
+                    <div id="lista_sensores" class="form__group"></div>
+
+                    
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
                     </div>
+                    
+                    
               </div>
       
               <!-- PASO 3 - Insumos -->
               <div class="form__step">
-                <label class="form__label">Insumo</label>
-                    <select class="form__input">
-                      <option value="">Insumo 1</option>
-                      <option value="">Insumo 2</option>
-                      <option value="">Insumo 3</option>
-                    </select>
+                <label class="form__label">Insumo
+                  <a href="#" class="open-modal" data-form-url="/frontend/public/views/agregar/form_insumo.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                         width="38" height="38" stroke-width="2">
+                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                      <path d="M9 12h6"></path>
+                      <path d="M12 9v6"></path>
+                    </svg>
+                  </a>
+                </label>
+                <select id="insumo" name="insumo_id" class="form__input">
+                  <option value="">Cargando insumos...</option>
+                </select>
+                    
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Insumo</button>
-                      <button type="button" class="form__add-btn">Agregar Sensor</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarInsumo">Agregar Sensor</button>
                     </div>
+                    <div id="lista_insumos" class="form__group"></div>
+
+                    <div class="form__group"><h3>Gasto estimado: 24.500</h3></div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
@@ -113,16 +142,25 @@
       
               <!-- PASO 4 - Ciclos Cultivos -->
               <div class="form__step">
-                <label class="form__label">Ciclo Cultivo</label>
-                    <select class="form__input">
-                      <option value="">Ciclo 1</option>
-                      <option value="">Ciclo 2</option>
-                      <option value="">Ciclo 3</option>
-                    </select>
+                <label class="form__label">Ciclo Cultivo
+                  <a href="#" class="open-modal" data-form-url="/frontend/public/views/agregar/form_ciclo_cultivos.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                         width="38" height="38" stroke-width="2">
+                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                      <path d="M9 12h6"></path>
+                      <path d="M12 9v6"></path>
+                    </svg>
+                  </a>
+                </label>
+                <select id="ciclo_cultivo" name="ciclo_cultivo_id" class="form__input">
+                  <option value="">Cargando Ciclo cultivos...</option>
+                </select>
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Ciclo Cultivo</button>
-                      <button type="button" class="form__add-btn">Agregar Ciclo Cultivo</button>
+                      
+                      <button type="button" class="form__add-btn" id="agregarCicloCultivo">Agregar Ciclo Cultivo</button>
                     </div>
+                    <div id="lista_ciclos" class="form__group"></div>
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
                         <button type="button" class="form__next">Siguiente</button>
@@ -131,22 +169,34 @@
       
               <!-- PASO 5 - Operadores -->
               <div class="form__step">
-                <label class="form__label">Operador</label>
-                    <select class="form__input">
-                      <option value="">Operador 1</option>
-                      <option value="">Operador 2</option>
-                      <option value="">Operador 3</option>
-                    </select>
+                <label class="form__label">Operador
+                  <a href="#" class="open-modal" data-form-url="/frontend/public/views/agregar/formulario.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                         width="38" height="38" stroke-width="2">
+                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                      <path d="M9 12h6"></path>
+                      <path d="M12 9v6"></path>
+                    </svg>
+                  </a>
+                </label>
+                <select id="operadores" name="operadores_id" class="form__input">
+                  <option value="">Cargando Operadores...</option>
+                </select>
                     <div>
-                      <button type="button" class="form__btn--dlt">Suprimir Operador</button>
-                      <button type="button" class="form__add-btn">Agregar Operador</button>
+        
+                      <button type="button" class="form__add-btn" id="agregarOperadores">Agregar Operador</button>
                     </div>
+                    <div id="lista_operadores" class="form__group"></div>
+
                     <div class="form__botons">
                         <button type="button" class="form__prev">Atrás</button>
-                        <button type="button" class="form__next">GUARDAR INTEGRACIÓN</button>
+                        <button type="submit" class="form__next">GUARDAR INTEGRACIÓN</button>
                     </div>
               </div>
+
             </form>
+
           </div>
         </section>
       </main>

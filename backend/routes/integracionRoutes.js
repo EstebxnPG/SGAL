@@ -6,7 +6,8 @@ const upload = multer({ dest: 'uploads/' });
 const { 
   crearIntegracion, 
   obtenerIntegraciones,
-  obtenerIntegracionPorId
+  obtenerIntegracionPorId,
+  actualizarIntegracion
 } = require('../controllers/integracionController');
 
 // Ruta para crear integración (POST)
@@ -16,5 +17,6 @@ router.post('/', upload.single('fotografia'), crearIntegracion);
 router.get('/', obtenerIntegraciones); // Todas las integraciones
 router.get('/integraciones', obtenerIntegraciones); // Ruta alternativa redundante
 router.get('/:id', obtenerIntegracionPorId); // Integración específica por ID
+router.put('/:id', upload.single('fotografia'), actualizarIntegracion);
 
 module.exports = router;

@@ -17,6 +17,7 @@
         <div class="dashboard__grid" id="integrationData">
             <!-- Los datos se cargarán dinámicamente aquí -->
         </div>
+        <button id="editButton" class="dashboard__edit-btn">Editar Integración</button>
     </div>
 
     <script>
@@ -176,6 +177,17 @@
                 }
             });
         }
+
+        document.getElementById('editButton')?.addEventListener('click', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const integrationId = urlParams.get('id');
+        
+        if (integrationId) {
+            window.location.href = `/frontend/public/views/modificar/modificar_integración.html?id=${integrationId}`;
+        } else {
+            alert('No se pudo obtener el ID de la integración para editar');
+        }
+    });
     </script>
 </body>
 </html>
