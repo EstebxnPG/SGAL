@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('../variables.css');
+
+* {
+    font-family: "Work Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--basic-white);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    font-size: 62.5%;
+    --Blanco: #ffffff;
+    --Negro: #000000;
+
+    --primary-color-50: #EDF7E8;
+    --primary-color-500: #93D074;
+
+    --basic-white: #FFFFFF;
+    --basic-gray-150: #F6F6F6;
+}
+
+* {
+    font-family: "Work Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--basic-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--primary-color-50);
+    border: 1px solid var(--primary-color-500);
+    border-radius: 1rem;
+    max-width: 90%;
+    width: 120rem;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 1.5rem;
+        width: 90%;
+    }
+}

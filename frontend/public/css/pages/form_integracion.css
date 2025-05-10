@@ -1,0 +1,4 @@
+@import url('../variables.css');
+span{
+    font-size: var(--font-paragraph);
+}

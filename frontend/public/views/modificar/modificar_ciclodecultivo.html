@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de ciclo de cultivos</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+    </aside>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <h1 class="content__title">Modificar Ciclo de Cultivo</h1>
+                <p class="content__subtitle">Modificar un ciclo de cultivo en la Granja Agrícola Lembo</p>
+                
+                <div class="form-container">
+                    <form class="form">
+                        <div class="form__grid">
+                            <div class="form__group">
+                                <label class="form__label" for="id_ciclo">ID Ciclo *</label>
+                                <input type="text" id="id_ciclo" class="form__input" pattern="\d+" title="Solo se permiten números" placeholder="Digite el ID del ciclo">
+                            </div>
+        
+                            <div class="form__group">
+                                <label class="form__label" for="nombre_ciclo">Nombre del Ciclo *</label>
+                                <input type="text" class="form__input form__input--name" placeholder="digite el nombre del ciclo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                
+                            </div>
+        
+                            <div class="form__group">
+                                <label class="form__label" for="fecha_inicio">Fecha de Inicio *</label>
+                                <input type="date" id="fecha_inicio" class="form__input">
+                            </div>
+        
+                            <div class="form__group">
+                                <label class="form__label" for="fecha_fin">Fecha de Fin *</label>
+                                <input type="date" id="fecha_fin" class="form__input">
+                            </div>
+        
+                            <div class="form__group">
+                                <label class="form__label" for="estado">Estado *</label>
+                                <select id="estado" class="form__input">
+                                    <option value="">Seleccione...</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="finalizado">Finalizado</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label class="form__label" for="descripcion">Descripción *</label>
+                                <textarea id="descripcion" class="form__input" placeholder="Ingrese la descripción"></textarea>
+                            </div>
+                        </div>
+                        <div class="form__end">
+                            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+                            <button type="submit" class="form__register-btn">Modificar Ciclo</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <button type="button" class="content__back-btn" onclick="location.href='../gestion/ciclo_cultivos.html'">VOLVER</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

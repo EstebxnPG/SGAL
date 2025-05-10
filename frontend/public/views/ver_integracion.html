@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Integración</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+</head>
+<body class="page">
+    <aside class="sidebar"></aside>
+    <div class="dashboard">
+        <h1 class="dashboard__title">🔗 Panel de Integración</h1>
+  
+        <div class="dashboard__grid" id="integrationData">
+            <!-- Los datos se cargarán dinámicamente aquí -->
+        </div>
+        <button id="editButton" class="dashboard__edit-btn">Editar Integración</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Obtener el ID de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const integrationId = urlParams.get('id');
+            
+            if (!integrationId) {
+                alert('No se especificó ID de integración');
+                window.location.href = '/frontend/public/views/gestion/integracion.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/integracion/${integrationId}`);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Error al cargar integración');
+                }
+
+                renderIntegrationData(data);
+                renderCharts(data);
+            } catch (error) {
+                console.error('Error:', error);
+                alert(error.message);
+                window.location.href = '/frontend/public/views/gestion/integracion.html';
+            }
+        });
+
+        function renderIntegrationData(data) {
+            const container = document.getElementById('integrationData');
+            
+            // Formatear fechas
+            const formatDate = (dateString) => {
+                if (!dateString) return 'No especificada';
+                const date = new Date(dateString);
+                return date.toLocaleDateString('es-ES');
+            };
+            
+
+            // Crear HTML con los datos reales
+            container.innerHTML = `
+                <div class="card"><strong class="card__label">ID Integración</strong>${data.id}</div>
+                <div class="card"><strong class="card__label">Nombre</strong>${data.nombre}</div>
+                <div class="card"><strong class="card__label">Estado</strong>${data.estado.toUpperCase()}</div>
+                <div class="card"><strong class="card__label">Fecha Inicial</strong>${formatDate(data.fecha_inicial)}</div>
+                <div class="card"><strong class="card__label">Fecha Final</strong>${formatDate(data.fecha_final)}</div>
+                <div class="card">
+    <strong class="card__label">Operadores</strong>
+    ${data.operadores && data.operadores.length > 0 ? 
+        data.operadores.map(op => `
+            <div class="operador-item">
+                ${op.nombre} (ID: ${op.id})
+            </div>
+        `).join('') : 
+        'No asignados'}
+</div>
+                <div class="card">
+                    <strong class="card__label">Cultivo</strong>
+                    ${data.cultivo_nombre || 'No asignado'}
+                </div>
+                <div class="card">
+                    <strong class="card__label">Fotografía</strong>
+                    <img class="card__image" src="${data.fotografia ? `http://localhost:3000/uploads/${data.fotografia}` : 'https://via.placeholder.com/200'}" alt="Fotografía" />
+                </div>
+                <div class="card card--sensores">
+                    <strong class="card__label">Sensores (${data.sensores.length})</strong>
+                    <canvas id="canvasSensores" width="200" height="100"></canvas>
+                </div>
+                <div class="card card--insumos">
+                    <strong class="card__label">Insumos (${data.insumos.length})</strong>
+                    <canvas id="canvasInsumos" width="200" height="100"></canvas>
+                </div>
+                <div class="card card--cicloCultivo">
+                    <strong class="card__label">Ciclos Cultivos (${data.ciclos.length})</strong>
+                    <canvas id="canvasCicloCultivo" width="200" height="100"></canvas>
+                </div>
+            `;
+        }
+
+        function renderCharts(data) {
+            // Datos para gráficos basados en los datos reales
+            const sensorData = {
+                labels: data.sensores.map(s => s.nombre),
+                values: data.sensores.map((_, i) => (i + 1) * 10) // Valores de ejemplo
+            };
+
+            const insumoData = {
+                labels: data.insumos.map(i => i.nombre),
+                values: data.insumos.map(i => i.cantidad)
+            };
+
+            const cicloProgress = Math.min(100, (data.ciclos.length / 5) * 100); // Ejemplo de progreso
+
+            // Gráfico de Sensores (Barras)
+            new Chart(document.getElementById('canvasSensores'), {
+                type: 'bar',
+                data: {
+                    labels: sensorData.labels,
+                    datasets: [{
+                        data: sensorData.values,
+                        backgroundColor: '#66bb6a'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Gráfico de Insumos (Líneas)
+            new Chart(document.getElementById('canvasInsumos'), {
+                type: 'line',
+                data: {
+                    labels: insumoData.labels,
+                    datasets: [{
+                        data: insumoData.values,
+                        borderColor: '#42a5f5',
+                        fill: true,
+                        backgroundColor: 'rgba(66, 165, 245, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Gráfico de Ciclos (Circular)
+            new Chart(document.getElementById('canvasCicloCultivo'), {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [cicloProgress, 100 - cicloProgress],
+                        backgroundColor: ['#ffa726', '#e0e0e0']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false }
+                    }
+                }
+            });
+        }
+
+        document.getElementById('editButton')?.addEventListener('click', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const integrationId = urlParams.get('id');
+        
+        if (integrationId) {
+            window.location.href = `/frontend/public/views/modificar/modificar_integración.html?id=${integrationId}`;
+        } else {
+            alert('No se pudo obtener el ID de la integración para editar');
+        }
+    });
+    </script>
+</body>
+</html>

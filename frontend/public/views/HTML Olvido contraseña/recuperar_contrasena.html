@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer Contraseña</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/olvido_contraseña.css">
+</head>
+<body>
+    <div class="page">
+        <div class="page__container">
+            <h1 class="page__title">SGAL</h1>
+            
+            <div class="form">
+                <div class="form__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                        <path d="M12 8v4"></path>
+                        <path d="M12 16h.01"></path>
+                    </svg>
+                </div>
+                <h1 class="form__title">INGRESA EL CÓDIGO</h1>
+                <p class="form__subtitle">Ingresa el código que se te envió a tu correo electrónico para restablecer tu contraseña</p>
+            </div>
+            
+            <form class="form__forgot">
+                <input type="text" id="code" class="form__input" placeholder="CÓDIGO">
+                <button type="submit" class="form__button">
+                    <a href="confirmacion.html" class="form__link">CONFIRMAR</a>
+                </button>
+                <button type="button" class="form__button form__button--secondary">
+                    <a href="/frontend/public/views/login.html" class="form__link">VOLVER</a>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

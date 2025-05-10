@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,103 +6,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="/STYLES_index_login/styles_index.css">
-    <link rel="stylesheet" href="/gestion/styles/styles.css">
-    <script src="/components/js/aside-bar.js" defer></script>
+    <link rel="stylesheet" href="/frontend/public/css/pages/styles_index.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/styles_index2.css"> 
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
 </head>
 
 <body>
-    <aside class="sidebar">
-    </aside>
+    <aside class="sidebar"></aside>
 
-    <main class="container__nav">
-        <header class="nav__bar">
-            <div class="search-bar">
-                <input class="search" type="search" placeholder="Buscar">
+    <main class="main">
+        <header class="mainNav">
+            <div class="main__search-bar">
+                <input class="main__search-bar__input" type="search" placeholder="Buscar">
             </div>
-            <div class="date-picker">
-                <p class="date__size"><b>Lunes, 31 de Diciembre</b></p>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+            <div class="nav__date-picker">
+                <p class="nav__text"><b>Lunes, 31 de Diciembre</b></p>
+                <svg class="nav__icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                     fill="#626262">
                     <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
                 </svg>
             </div>
-            <div class="header-actions">
-                <button class="notification-btn"></button>
-                <button class="settings-btn"></button>
+            <div class="nav__actions">
+                <button class="actions__notification-btn"></button>
+                <button class="actions__settings-btn"></button>
             </div>
         </header>
 
-        <section class="content">
-            <div class="cards-content">
-                <div class="card-home">
-                    <div class="card__title">
-                        <h2 class=" cards__names">Cultivos</h2>
+        <section class="mainContent">
+            <div class="contentCards">
+                <div class="card">
+                    <div class="card__header">
+                        <h2 class=" card__tittle">Cultivos</h2>
                     </div>
-                    <div class="elements-container">
-                        <div class="element-home"><img src="/STYLES_index_login/img/image (1).png" alt=""></div>
-                        <div class="element-home"><img src="/STYLES_index_login/img/image (1).png" alt=""></div>
-                        <div class="element-home"><img src="/STYLES_index_login/img/image (1).png" alt=""></div>
-                        <div class="element-home agree"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> <a href="/agregar/form_cultivos.html">Agregar</a></div>
-                    </div>
-
-                </div>
-                <div class="card-home">
-                    <div class="card__title">
-                        <h2 class="cards__names">Clico de cultivos</h2>
-                    </div>
-                    <div class="elements-container">
-                        <div class="element-home"><img src="/STYLES_index_login/img/ciclo de cultivo.png" alt=""></div>
-                        <div class="element-home"><img src="/STYLES_index_login/img/ciclo de cultivo.png" alt=""></div>
-                        <div class="element-home"><img src="/STYLES_index_login/img/ciclo de cultivo.png" alt=""></div>
-                        <div class="element-home agree"><div class="element-home agree"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg><a href="/gestion/ciclo_cultivos.html">Agregar</a></div></div>
+                    <div class="card__box">
+                        <div class="card__element"><img src="/frontend/public/img/image (1).png" alt=""></div>
+                        <div class="card__element"><img src="/frontend/public/img/image (1).png" alt=""></div>
+                        <div class="card__element"><img src="/frontend/public/img/image (1).png "alt=""></div>
+                        <div class="card__element card__element--add"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> <a href="/agregar/form_cultivos.html">Agregar</a></div>
                     </div>
 
                 </div>
-                <div class="card-home two">
-                    <aside class="homeworks">
-                        <h2 class="cards__names">Tareas Hoy</h2>
-                        <p class="p">Hoy lunes, 31 de Diciembre</p>
-                        <ul class="content__homework">
-                            <li class="list__homework"><p class="p">Nombre de la tarea</p></li>
-                            <li class="list__homework"><p class="p">Nombre de la tarea</p></li>
-                            <li class="list__homework"><p class="p">Nombre de la tarea</p></li>
+                <div class="card">
+                    <div class="card__header">
+                        <h2 class="card__tittle">Clico de cultivos</h2>
+                    </div>
+                    <div class="card__box">
+                        <div class="card__element"><img src="/frontend/public/img/ciclo de cultivo.png" alt=""></div>
+                        <div class="card__element"><img src="/frontend/public/img/ciclo de cultivo.png" alt=""></div>
+                        <div class="card__element"><img src="/frontend/public/img/ciclo de cultivo.png " alt=""></div>
+                        <div class="card__element card__element--add"><div class="card__element card__element--add"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg><a href="/gestion/ciclo_cultivos.html">Agregar</a></div></div>
+                    </div>
+
+                </div>
+                <div class="card card--task">
+                    <aside class="taks">
+                        <h2 class="task__title">Tareas Hoy</h2>
+                        <p class="date-picker__text">Hoy lunes, 31 de Diciembre</p>
+                        <ul class="tasks__list">
+                            <li class="tasks__item"><p class="p">Nombre de la tarea</p></li>
+                            <li class="tasks__item"><p class="p">Nombre de la tarea</p></li>
+                            <li class="tasks__item"><p class="p">Nombre de la tarea</p></li>
                         </ul>
                     </aside>
-                    <div class="right">
-                        <img src="/STYLES_index_login/img/coco.png" alt="calendario">
-                        <button class="primary-btn">Agregar Tarea</button>
+                    <div class="tasks__actions">
+                        <img class="tasks__icon" src="/frontend/public/img/coco.png" alt="calendario">
+                        <button class="tasks__btn">Agregar Tarea</button>
                     </div>
                 </div>
-                <div class="card-home">
-                    <img src="/STYLES_index_login/img/clima.png" alt="">
+                <div class="card">
+                    <img class="card__image" src="/frontend/public/img/clima.png" alt="">
                 </div>
-                <div class="card-home full">
-                    <H2 class="cards__names">Notificaciones y alertas</H2>
-                    <table class="table__form">
-                        <thead class="form__homeworks">
-                            <tr class="alerts__homeworks">
-                                <th class="alerts">Fecha</th>
-                                <th class="alerts">Nombre</th>
-                                <th class="alerts">ROL</th>  
-                                <th class="alerts">NOTIFICACIÓN</th>
-                                <th class="end">IMPORTANCIA </th>
+                <div class="card card--full">
+                    <H2 class="card__tittle">Notificaciones y alertas</H2>
+                    <table class="notifications__table">
+                        <thead class="notifications__header">
+                            <tr class="notifications__row">
+                                <th class="notifications__cell">Fecha</th>
+                                <th class="notifications__cell">Nombre</th>
+                                <th class="notifications__cell">ROL</th>  
+                                <th class="notifications__cell">NOTIFICACIÓN</th>
+                                <th class="notifications__cell notifications__cell--end">IMPORTANCIA </th>
                             </tr>
                         </thead>
-                        <tbody class="form_data">
-                            <tr class="alerts__homeworks">
-                                <td class="information">11-09</td>
-                                <td class="information">BRYAN ANDRES GIRALDO ORTIZ</td>
-                                <td class="information">EL DUEÑO</td>
-                                <td class="information">CULTIVOS DE BANANOS TIENE INUNDACION</td>
-                                <td class="end">URGENTE</td>
+                        <tbody class="notifications__body">
+                            <tr class="notifications__row">
+                                <td class="notifications__cell">11-09</td>
+                                <td class="notifications__cell">BRYAN ANDRES GIRALDO ORTIZ</td>
+                                <td class="notifications__cell">EL DUEÑO</td>
+                                <td class="notifications__cell">CULTIVOS DE BANANOS TIENE INUNDACION</td>
+                                <td class="notifications__cell notifications__cell--end">URGENTE</td>
                             </tr>
-                            <tr class="alerts__homeworks">
-                                <td class="information">11-09</td>
-                                <td class="information">BRYAN ANDRES GIRALDO ORTIZ</td>
-                                <td class="information">EL DUEÑO</td>
-                                <td class="information">CULTIVOS DE BANANOS TIENE INUNDACION</td>
-                                <td class="end">URGENTE</td>
+                            <tr class="notifications__row">
+                                <td class="notifications__cell">11-09</td>
+                                <td class="notifications__cell">BRYAN ANDRES GIRALDO ORTIZ</td>
+                                <td class="notifications__cell">EL DUEÑO</td>
+                                <td class="notifications__cell">CULTIVOS DE BANANOS TIENE INUNDACION</td>
+                                <td class="notifications__cell--end">URGENTE</td>
                             </tr>
                         </tbody>
                     </table>

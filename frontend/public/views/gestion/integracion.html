@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Integración</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/style_index_gestion.css">
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="/frontend/public/views/components/js/search-bar.js" defer></script>
+    <script src="/frontend/public/js/pages/integracion.js" defer></script>
+
+</head>
+<body>  
+    <aside class="sidebar">
+    </aside>
+    <main class="main">
+        <header class="header">
+        </header>
+
+        <section class="content">
+            <div class="content__header">
+                <h1 class="content__title">Gestión de Integraciones</h1>
+                <div class="content__actions">
+                    <button class="content__filter-btn">FILTRAR</button>
+                    <button class="content__report-btn"><a href="../listar/lista_usuarios.html" class="content__report-btn">Ver reportes de Integraciones</a></button>
+                    <button class="content__add-btn" onclick="location.href='../agregar/form_integracion.html'">Crear Integración</button>
+                </div>
+            </div>
+
+            <div class="users-grid">
+                <!-- Las cards se generarán dinámicamente con JavaScript -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>

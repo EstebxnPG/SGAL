@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Sensores</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="/frontend/public/js/validaciones_agregar.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+    </aside>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <h1 class="content__title">Agregar Sensor</h1>
+                <p class="content__subtitle">Registro de un nuevo sensor en la Granja Agrícola Lembo</p>
+                
+                <div class="form-container">
+                    <form class="form" action="http://localhost:3000/sensor" method="POST">
+                        <div class="form__grid">
+
+                            <div class="form__group">
+                                <label class="form__label">Nombre del sensor *</label>
+                                <input type="text" class="form__input form__input--nombre" placeholder="Digite el nombre del sensor" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Estado *</label>
+                                <select class="form__input form__input--state">
+                                    <option value="Habilitado">Activo</option>
+                                    <option value="Deshabilitado">Inactivo</option>
+                                </select>
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label form__label--tipo-sensor">Tipo Sensor *</label>
+                                <select class="form__input form__input--tipo-sensor" >
+                                    <option value="">Seleccione...</option>
+                                    <option value="Temperatura">Temperatura</option>
+                                    <option value="Humedad">Humedad</option>
+                                    <option value="pH">pH</option>
+                                    <option value="Luminosidad">Luminosidad</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label class="form__label">Unidad de medida *</label>
+                                <select class="form__input form__input--medida" >
+                                    <option value="">Seleccione...</option>
+                                    <option value="°C">°C</option>
+                                    <option value="%">%</option>
+                                    <option value="pH">pH</option>
+                                    <option value="Lux">Lux</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__group">
+                                <label class="form__label">Fotografía</label>
+                                <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Descripción *</label>
+                                <input type="tel" class="form__input form__input--descripcion" placeholder="Ingrese la descripción" >
+                            </div>
+                        </div>
+
+                        <div class="form__end">
+                            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+                            <button type="submit" class="form__register-btn">Registrar Sensor</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <button type="button" class="content__back-btn" onclick="location.href='../gestion/sensores.html'">VOLVER</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="/frontend/public/js/pages/sensor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ciclo de Cultivos</title>
+    <link rel="stylesheet" href="/frontend/public/css/pages/form-agregar-modificar.css">
+    <link rel="stylesheet" href="/frontend/public/css/pages/agregar-modificar.css">
+    <script src="/agregar/js/cargar_script.js"></script>
+    <script src="/frontend/public/views/components/js/aside-bar.js" defer></script>
+    <script src="/frontend/public/js/validaciones_agregar.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+    </aside>
+
+    <main class="main">
+        <section class="content">
+            <div class="content__container">
+                <h1 class="content__title">Agregar Cultivo</h1>
+                <p class="content__subtitle">Registro de un nuevo cultivo en la Granja Agrícola Lembo</p>
+                
+                <div class="form-container">
+                    <form class="form" method="POST" action="http://localhost:3000/cultivo">
+                        <div class="form__grid">
+                            <div class="form__group">
+                                <label class="form__label">Tipo de cultivo *</label>
+                                <select class="form__input form__input--typeCrop" >
+                                    <option value="">Seleccione una opción...</option>
+                                    <option value="Maíz">Maíz</option>
+                                    <option value="Trigo">Trigo</option>
+                                    <option value="Cebada">Cebada</option>
+                                    <option value="Frutas">Frutas</option>
+                                    <option value="Verduras">Verduras</option>
+                                    <option value="Legumbres">Legumbres</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form__group">
+                                <label class="form__label">Nombre del cultivo *</label>
+                                <input type="text" class="form__input form__input--name" placeholder="Ingrese el Nombre del cultivo" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" required title="Solo se permiten letras y espacios" maxlength="25">
+                                >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Identificador del Cultivo *</label>
+                                <input type="text" class="form__input form__input--cropIdentifier" pattern="\d+" title="Solo se permiten números" placeholder="Ingrese el Número del cultivo" maxlength="10">
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Tamaño en m2 *</label>
+                                <input type="text" class="form__input form__input--size" placeholder="Ingrese el tamaño" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Ubicación *</label>
+                                <input type="text" class="form__input form__input--address" placeholder="Ingrese la ubicación" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Descripción *</label>
+                                <input type="text" class="form__input form__input--description" placeholder="Ingrese la Descripción" >
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Fotografía</label>
+                                <button type="button" class="form__upload-btn">ADJUNTAR IMAGEN</button>
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label">Estado *</label>
+                                <select class="form__input form__input--state">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form__end">
+                            <p class="form__mandatory-text">(*) Campos Obligatorios.</p>
+                            <button type="submit" class="form__register-btn">Registrar Cultivo</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <button type="button" class="content__back-btn" onclick="location.href='../gestion/cultivos.html'">VOLVER</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+<script src="/frontend/public/js/pages/cultivo.js"></script>
+</html>
+
